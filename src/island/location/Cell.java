@@ -5,6 +5,7 @@ import island.animal.Plant;
 import island.animal.kind.enumerator.Kind;
 import island.animal.kind.herbivore.*;
 import island.animal.kind.predator.*;
+import island.config.Configuration;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -14,8 +15,9 @@ import java.util.Map;
 import static island.animal.kind.enumerator.Kind.*;
 
 public class Cell {
+    private int row;
+    private int column;
     private final Map<Kind, List<? extends Animal>> animals = new HashMap<>();
-    private final List<Plant> plants = new ArrayList<>();
 
     public Cell() {
         populateByKind(WOLF, getRandomNumberFromRange(0, 30));
@@ -36,12 +38,14 @@ public class Cell {
         populateByKind(PLANT, getRandomNumberFromRange(0, 200));
     }
 
-    public Map<Kind, List<? extends Animal>> getAnimals() {
-        return animals;
+    public Cell(int row, int column) {
+        this();
+        this.row = row;
+        this.column = column;
     }
 
-    public List<Plant> getPlants() {
-        return plants;
+    public Map<Kind, List<? extends Animal>> getAnimals() {
+        return animals;
     }
 
     private Map<Kind, List<? extends Animal>> populateByKind(Kind name, int times) {
@@ -49,112 +53,114 @@ public class Cell {
             case WOLF -> {
                 List<Wolf> wolves = new ArrayList<>();
                 for (int i = 0; i < times; i++) {
-                    wolves.add(new Wolf());
+                    wolves.add(new Wolf(Configuration.animalFields.get(WOLF)));
                 }
                 animals.put(WOLF, wolves);
             }
             case ANACONDA -> {
                 List<Anaconda> anacondas = new ArrayList<>();
                 for (int i = 0; i < times; i++) {
-                    anacondas.add(new Anaconda());
+                    anacondas.add(new Anaconda(Configuration.animalFields.get(ANACONDA)));
                 }
                 animals.put(ANACONDA, anacondas);
             }
             case FOX -> {
                 List<Fox> foxes = new ArrayList<>();
                 for (int i = 0; i < times; i++) {
-                    foxes.add(new Fox());
+                    foxes.add(new Fox(Configuration.animalFields.get(FOX)));
                 }
                 animals.put(FOX, foxes);
             }
             case BEAR -> {
                 List<Bear> bears = new ArrayList<>();
                 for (int i = 0; i < times; i++) {
-                    bears.add(new Bear());
+                    bears.add(new Bear(Configuration.animalFields.get(BEAR)));
                 }
                 animals.put(BEAR, bears);
             }
             case EAGLE -> {
                 List<Eagle> eagles = new ArrayList<>();
                 for (int i = 0; i < times; i++) {
-                    eagles.add(new Eagle());
+                    eagles.add(new Eagle(Configuration.animalFields.get(EAGLE)));
                 }
                 animals.put(EAGLE, eagles);
             }
             case HORSE -> {
                 List<Horse> horses = new ArrayList<>();
                 for (int i = 0; i < times; i++) {
-                    horses.add(new Horse());
+                    horses.add(new Horse(Configuration.animalFields.get(HORSE)));
                 }
                 animals.put(HORSE, horses);
             }
             case DEER -> {
                 List<Deer> deers = new ArrayList<>();
                 for (int i = 0; i < times; i++) {
-                    deers.add(new Deer());
+                    deers.add(new Deer(Configuration.animalFields.get(DEER)));
                 }
                 animals.put(DEER, deers);
             }
             case RABBIT -> {
                 List<Rabbit> rabbits = new ArrayList<>();
                 for (int i = 0; i < times; i++) {
-                    rabbits.add(new Rabbit());
+                    rabbits.add(new Rabbit(Configuration.animalFields.get(RABBIT)));
                 }
                 animals.put(RABBIT, rabbits);
             }
             case MOUSE -> {
                 List<Mouse> mice = new ArrayList<>();
                 for (int i = 0; i < times; i++) {
-                    mice.add(new Mouse());
+                    mice.add(new Mouse(Configuration.animalFields.get(MOUSE)));
                 }
                 animals.put(MOUSE, mice);
             }
             case GOAT -> {
                 List<Goat> goats = new ArrayList<>();
                 for (int i = 0; i < times; i++) {
-                    goats.add(new Goat());
+                    goats.add(new Goat(Configuration.animalFields.get(GOAT)));
                 }
                 animals.put(GOAT, goats);
             }
             case SHEEP -> {
                 List<Sheep> sheeps = new ArrayList<>();
                 for (int i = 0; i < times; i++) {
-                    sheeps.add(new Sheep());
+                    sheeps.add(new Sheep(Configuration.animalFields.get(SHEEP)));
                 }
                 animals.put(SHEEP, sheeps);
             }
             case BOAR -> {
                 List<Boar> boars = new ArrayList<>();
                 for (int i = 0; i < times; i++) {
-                    boars.add(new Boar());
+                    boars.add(new Boar(Configuration.animalFields.get(BOAR)));
                 }
                 animals.put(BOAR, boars);
             }
             case BUFFALO -> {
                 List<Buffalo> buffalo = new ArrayList<>();
                 for (int i = 0; i < times; i++) {
-                    buffalo.add(new Buffalo());
+                    buffalo.add(new Buffalo(Configuration.animalFields.get(BUFFALO)));
                 }
                 animals.put(BUFFALO, buffalo);
             }
             case DUCK -> {
                 List<Duck> ducks = new ArrayList<>();
                 for (int i = 0; i < times; i++) {
-                    ducks.add(new Duck());
+                    ducks.add(new Duck(Configuration.animalFields.get(DUCK)));
                 }
                 animals.put(DUCK, ducks);
             }
             case CATERPILLAR -> {
                 List<Caterpillar> caterpillars = new ArrayList<>();
                 for (int i = 0; i < times; i++) {
-                    caterpillars.add(new Caterpillar());
+                    caterpillars.add(new Caterpillar(Configuration.animalFields.get(CATERPILLAR)));
                 }
                 animals.put(CATERPILLAR, caterpillars);
             }
             case PLANT -> {
+                List<Plant> plants = new ArrayList<>();
                 for (int i = 0; i < times; i++) {
-                    plants.add(new Plant());
+                    plants.add(new Plant(Configuration.animalFields.get(PLANT)));
                 }
+                animals.put(PLANT, plants);
             }
         }
 
@@ -168,8 +174,9 @@ public class Cell {
     @Override
     public String toString() {
         return "Cell{" +
-                "animals=" + animals +
-                ", plants=" + plants +
+                "row=" + row +
+                ", column=" + column +
+                ", animals=" + animals +
                 '}';
     }
 }

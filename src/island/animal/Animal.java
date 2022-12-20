@@ -1,9 +1,24 @@
 package island.animal;
 
 public abstract class Animal {
-    private boolean isAlive = true;
+    private final String name;
+    private final String icon;
+    private final double weight;
+    private final int speed;
+    private final double satiety;
+    private final boolean isAlive;
 
-    public abstract void eat();
-    public abstract void breed();
-    public abstract void move();
+    public Animal(Fields fields) {
+        this.name = fields.getName();
+        this.icon = fields.getIcon();
+        this.weight = fields.getWeight();
+        this.speed = fields.getSpeed();
+        this.satiety = fields.getSatiety();
+        this.isAlive = fields.isAlive();
+    }
+
+    @Override
+    public String toString() {
+        return icon;
+    }
 }

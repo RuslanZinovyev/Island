@@ -1,5 +1,7 @@
 package island.animal;
 
-public class Plant {
-    private int weight;
+public class Plant extends Animal {
+    public Plant(Fields fields) {
+        super(fields);
+    }
 }

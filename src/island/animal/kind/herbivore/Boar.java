@@ -1,22 +1,9 @@
 package island.animal.kind.herbivore;
 
+import island.animal.Fields;
+
 public class Boar extends Herbivore {
-    private int weight;
-    private int speed;
-    private int satiety;
-
-    @Override
-    public void eat() {
-
-    }
-
-    @Override
-    public void breed() {
-
-    }
-
-    @Override
-    public void move() {
-
+    public Boar(Fields fields) {
+        super(fields);
     }
 }

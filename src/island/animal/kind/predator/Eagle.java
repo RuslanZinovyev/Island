@@ -1,22 +1,9 @@
 package island.animal.kind.predator;
 
+import island.animal.Fields;
+
 public class Eagle extends Predator {
-    private int weight;
-    private int speed;
-    private int satiety;
-
-    @Override
-    public void eat() {
-
-    }
-
-    @Override
-    public void breed() {
-
-    }
-
-    @Override
-    public void move() {
-
+    public Eagle(Fields fields) {
+        super(fields);
     }
 }
