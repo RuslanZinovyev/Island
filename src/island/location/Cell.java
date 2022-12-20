@@ -11,6 +11,7 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.concurrent.ThreadLocalRandom;
 
 import static island.animal.kind.enumerator.Kind.*;
 
@@ -168,7 +169,7 @@ public class Cell {
     }
 
     private int getRandomNumberFromRange(int min, int max) {
-        return (int) ((Math.random() * (max - min)) + min);
+        return ThreadLocalRandom.current().nextInt(min, max);
     }
 
     @Override
