@@ -10,6 +10,5 @@ public class ApplicationRunner {
         IslandGenerator islandGenerator = new IslandGenerator();
         islandGenerator.initialize();
         islandGenerator.printInfo();
-
     }
 }

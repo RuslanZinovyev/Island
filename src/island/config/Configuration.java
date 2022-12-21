@@ -9,8 +9,8 @@ import java.util.Map;
 import static island.animal.kind.enumerator.Kind.*;
 
 public class Configuration {
-    public static final int row = 30;
-    public static final int column = 30;
+    public static final int row = 3;
+    public static final int column = 3;
     public static Map<Kind, Fields> animalFields = new HashMap<>();
 
     private Configuration() {}
