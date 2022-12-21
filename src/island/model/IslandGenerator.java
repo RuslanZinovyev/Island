@@ -10,7 +10,7 @@ import java.util.Map;
 
 public class IslandGenerator {
 
-    private static final Cell[][] ISLAND = new Cell[Configuration.row][Configuration.column];
+    public static final Cell[][] ISLAND = new Cell[Configuration.row][Configuration.column];
 
     // initialize island with cells
     public void initialize() {

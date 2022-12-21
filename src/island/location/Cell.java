@@ -1,16 +1,16 @@
 package island.location;
 
 import island.animal.Animal;
-import island.animal.kind.plant.Plant;
 import island.animal.kind.enumerator.Kind;
 import island.animal.kind.herbivore.*;
+import island.animal.kind.plant.Plant;
 import island.animal.kind.predator.*;
 import island.config.Configuration;
 
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.concurrent.ConcurrentHashMap;
 import java.util.concurrent.ThreadLocalRandom;
 
 import static island.animal.kind.enumerator.Kind.*;
@@ -19,7 +19,7 @@ public class Cell {
 
     private int row;
     private int column;
-    private final Map<Kind, List<? extends Animal>> animals = new HashMap<>();
+    private final Map<Kind, List<? extends Animal>> animals = new ConcurrentHashMap<>();
 
     public Cell() {
         populateByKind(WOLF, getRandomNumberFromRange(0, 30));

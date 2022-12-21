@@ -1,5 +1,12 @@
 package island.animal;
 
+import island.animal.kind.enumerator.Kind;
+import island.config.Configuration;
+import island.location.Cell;
+import island.model.IslandGenerator;
+
+import java.util.concurrent.ThreadLocalRandom;
+
 public abstract class Animal {
 
     private final String name;
@@ -17,6 +24,8 @@ public abstract class Animal {
         this.satiety = fields.getSatiety();
         this.isAlive = fields.isAlive();
     }
+
+    public abstract boolean move(Cell cell);
 
     @Override
     public String toString() {
