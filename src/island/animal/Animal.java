@@ -1,6 +1,7 @@
 package island.animal;
 
 public abstract class Animal {
+
     private final String name;
     private final String icon;
     private final double weight;
@@ -21,4 +22,5 @@ public abstract class Animal {
     public String toString() {
         return icon;
     }
+
 }

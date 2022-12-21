@@ -1,6 +1,7 @@
 package island.animal;
 
 public class Fields {
+
     private final String name;
     private final String icon;
     private final double weight;
@@ -52,4 +53,5 @@ public class Fields {
                 ", isAlive=" + isAlive +
                 '}';
     }
+
 }

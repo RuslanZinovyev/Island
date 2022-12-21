@@ -1,7 +1,7 @@
 package island.location;
 
 import island.animal.Animal;
-import island.animal.Plant;
+import island.animal.kind.plant.Plant;
 import island.animal.kind.enumerator.Kind;
 import island.animal.kind.herbivore.*;
 import island.animal.kind.predator.*;
@@ -16,6 +16,7 @@ import java.util.concurrent.ThreadLocalRandom;
 import static island.animal.kind.enumerator.Kind.*;
 
 public class Cell {
+
     private int row;
     private int column;
     private final Map<Kind, List<? extends Animal>> animals = new HashMap<>();
@@ -43,6 +44,14 @@ public class Cell {
         this();
         this.row = row;
         this.column = column;
+    }
+
+    public int getRow() {
+        return row;
+    }
+
+    public int getColumn() {
+        return column;
     }
 
     public Map<Kind, List<? extends Animal>> getAnimals() {
@@ -180,4 +189,5 @@ public class Cell {
                 ", animals=" + animals +
                 '}';
     }
+
 }
