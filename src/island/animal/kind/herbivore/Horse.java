@@ -8,4 +8,5 @@ public class Horse extends Herbivore {
         super(fields);
     }
 
+
 }

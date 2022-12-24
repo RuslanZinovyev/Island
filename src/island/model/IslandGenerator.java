@@ -10,7 +10,7 @@ import java.util.Map;
 
 public class IslandGenerator {
 
-    private static final Cell[][] ISLAND = new Cell[Configuration.row][Configuration.column];
+    public static final Cell[][] ISLAND = new Cell[Configuration.row][Configuration.column];
 
     // initialize island with cells
     public void initialize() {
@@ -21,7 +21,7 @@ public class IslandGenerator {
         }
     }
 
-    public void printInfo(){
+    public void printInfo() {
         // Details for each cell
         for (int i = 0; i < ISLAND.length; i++) {
             for (int j = 0; j < ISLAND[i].length; j++) {
@@ -35,7 +35,7 @@ public class IslandGenerator {
 
         for (int i = 0; i < ISLAND.length; i++) {
             for (int j = 0; j < ISLAND[i].length; j++) {
-                Map<Kind, List<? extends Animal>> map = ISLAND[i][j].getAnimals();
+                Map<Kind, List<Animal>> map = ISLAND[i][j].getAnimals();
                 for (List<? extends Animal> value : map.values()) {
                     for (Animal animal : value) {
                         totalCount++;
