@@ -7,14 +7,16 @@ public class Fields {
     private final double weight;
     private final int speed;
     private final double satiety;
+    private final int maxCount;
     private final boolean isAlive;
 
-    public Fields(String name, String icon, double weight, int speed, double satiety, boolean isAlive) {
+    public Fields(String name, String icon, double weight, int speed, double satiety, int maxCount, boolean isAlive) {
         this.name = name;
         this.icon = icon;
         this.weight = weight;
         this.speed = speed;
         this.satiety = satiety;
+        this.maxCount = maxCount;
         this.isAlive = isAlive;
     }
 
@@ -38,6 +40,10 @@ public class Fields {
         return satiety;
     }
 
+    public int getMaxCount() {
+        return maxCount;
+    }
+
     public boolean isAlive() {
         return isAlive;
     }
@@ -50,6 +56,7 @@ public class Fields {
                 ", weight=" + weight +
                 ", speed=" + speed +
                 ", satiety=" + satiety +
+                ", maxCount=" + maxCount +
                 ", isAlive=" + isAlive +
                 '}';
     }

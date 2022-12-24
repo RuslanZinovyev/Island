@@ -24,7 +24,9 @@ public class ApplicationRunner {
             for (int i = 0; i < ISLAND.length; i++) {
                 for (int j = 0; j < ISLAND[i].length; j++) {
                     Cell cell = ISLAND[i][j];
+                    System.out.printf("BEFORE: Amount of wolfs on the following cell[%d][%d]: %d \n", i, j, cell.getAnimals().get(Kind.WOLF).size());
                     runEvent(cell);
+                    System.out.printf("AFTER: Amount of wolfs on the following cell[%d][%d]: %d \n", i, j, cell.getAnimals().get(Kind.WOLF).size());
                 }
             }
             try {
@@ -36,8 +38,8 @@ public class ApplicationRunner {
         }
     }
 
-    private static void runEvent(Cell cell) {
-        for (Map.Entry<Kind, List<? extends Animal>> pair : cell.getAnimals().entrySet()) {
+    private synchronized static void runEvent(Cell cell) {
+        for (Map.Entry<Kind, List<Animal>> pair : cell.getAnimals().entrySet()) {
             List<? extends Animal> animals = pair.getValue();
             Iterator<? extends Animal> iterator = animals.iterator();
             while (iterator.hasNext()) {

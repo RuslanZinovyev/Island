@@ -9,27 +9,36 @@ import java.util.concurrent.ThreadLocalRandom;
 
 public abstract class Animal {
 
-    private final String name;
-    private final String icon;
-    private final double weight;
-    private final int speed;
-    private final double satiety;
-    private final boolean isAlive;
+    private final Fields fields;
 
     public Animal(Fields fields) {
-        this.name = fields.getName();
-        this.icon = fields.getIcon();
-        this.weight = fields.getWeight();
-        this.speed = fields.getSpeed();
-        this.satiety = fields.getSatiety();
-        this.isAlive = fields.isAlive();
+        this.fields = fields;
     }
 
-    public abstract boolean move(Cell cell);
+    public boolean move(Cell cell) {
+        if (fields.getName().equals("Plant")) {
+            return false;
+        }
+        int newRow = (cell.getRow() + fields.getSpeed()) % Configuration.row;
+        int newColumn = (cell.getColumn() + fields.getSpeed()) % Configuration.column;
+
+        boolean isMove = ThreadLocalRandom.current().nextBoolean();
+
+        if (newRow >= Configuration.row || newColumn >= Configuration.column || newRow < 0 || newColumn < 0) {
+            isMove = false;
+        }
+
+        if (isMove){
+            Kind kind = Kind.valueOf(this.getClass().getSimpleName().toUpperCase());
+            IslandGenerator.ISLAND[newRow][newColumn].getAnimals().get(kind).add(this);
+        }
+
+        return isMove;
+    }
 
     @Override
     public String toString() {
-        return icon;
+        return fields.getIcon();
     }
 
 }
