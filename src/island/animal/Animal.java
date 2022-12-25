@@ -15,6 +15,10 @@ public abstract class Animal {
         this.fields = fields;
     }
 
+    public Fields getFields() {
+        return fields;
+    }
+
     public boolean move(Cell cell) {
         if (fields.getName().equals("Plant")) {
             return false;

@@ -13,8 +13,8 @@ import java.util.concurrent.ThreadLocalRandom;
 
 public class Cell {
 
-    private int row;
-    private int column;
+    private final int row;
+    private final int column;
     private final Map<Kind, List<Animal>> animals = new ConcurrentHashMap<>();
 
     public Cell(int row, int column) {
