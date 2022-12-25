@@ -7,5 +7,4 @@ public class Mouse extends Herbivore {
     public Mouse(Fields fields) {
         super(fields);
     }
-
 }

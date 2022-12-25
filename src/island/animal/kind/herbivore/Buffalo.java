@@ -7,5 +7,4 @@ public class Buffalo extends Herbivore {
     public Buffalo(Fields fields) {
         super(fields);
     }
-
 }

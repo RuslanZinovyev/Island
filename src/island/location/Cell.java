@@ -35,7 +35,7 @@ public class Cell {
         return animals;
     }
 
-    public void populateIsland(){
+    public void populateIsland() {
         Kind[] kindSet = Kind.values();
         for (Kind kind : kindSet) {
             int num = getRandomNumberFromRange(0, Configuration.animalFields.get(kind).getMaxCount());
@@ -46,7 +46,6 @@ public class Cell {
             }
             animals.put(kind, animalSet);
         }
-
     }
 
     private int getRandomNumberFromRange(int min, int max) {
@@ -61,5 +60,4 @@ public class Cell {
                 ", animals=" + animals +
                 '}';
     }
-
 }

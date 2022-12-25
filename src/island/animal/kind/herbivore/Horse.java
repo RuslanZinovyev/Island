@@ -7,6 +7,4 @@ public class Horse extends Herbivore {
     public Horse(Fields fields) {
         super(fields);
     }
-
-
 }

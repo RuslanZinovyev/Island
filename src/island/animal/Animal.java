@@ -32,7 +32,7 @@ public abstract class Animal {
             isMove = false;
         }
 
-        if (isMove){
+        if (isMove) {
             Kind kind = Kind.valueOf(this.getClass().getSimpleName().toUpperCase());
             IslandGenerator.ISLAND[newRow][newColumn].getAnimals().get(kind).add(this);
         }

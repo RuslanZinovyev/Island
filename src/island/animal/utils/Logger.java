@@ -41,7 +41,7 @@ public class Logger {
             for (int j = 0; j < ISLAND[i].length; j++) {
 
                 wolfAmount += ISLAND[i][j].getAnimals().get(WOLF).size();
-                anacondaAmount += ISLAND[i][j].getAnimals().get(ANACONDA).size();
+                anacondaAmount += ISLAND[i][j].getAnimals().get(SNAKE).size();
                 foxAmount += ISLAND[i][j].getAnimals().get(FOX).size();
                 bearAmount += ISLAND[i][j].getAnimals().get(BEAR).size();
                 eagleAmount += ISLAND[i][j].getAnimals().get(EAGLE).size();
@@ -60,8 +60,8 @@ public class Logger {
             }
         }
         System.out.printf("Day: %d\n", day);
-        print( " \uD83D\uDC3A", wolfAmount, WOLF);
-        print(" \uD83D\uDC0D", anacondaAmount, ANACONDA);
+        print(" \uD83D\uDC3A", wolfAmount, WOLF);
+        print(" \uD83D\uDC0D", anacondaAmount, SNAKE);
         print(" \uD83E\uDD8A", foxAmount, FOX);
         print(" \uD83D\uDC3B", bearAmount, BEAR);
         print(" \uD83E\uDD85", eagleAmount, EAGLE);

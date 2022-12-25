@@ -7,5 +7,4 @@ public class Wolf extends Predator {
     public Wolf(Fields fields) {
         super(fields);
     }
-
 }

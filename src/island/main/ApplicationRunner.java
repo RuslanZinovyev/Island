@@ -2,6 +2,8 @@ package island.main;
 
 import island.animal.Animal;
 import island.animal.kind.enumerator.Kind;
+import island.animal.kind.herbivore.Herbivore;
+import island.animal.kind.predator.Predator;
 import island.animal.utils.Logger;
 import island.location.Cell;
 import island.model.IslandGenerator;
@@ -10,6 +12,7 @@ import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
 
+import static island.animal.kind.enumerator.Kind.PLANT;
 import static island.model.IslandGenerator.ISLAND;
 
 /**
@@ -28,7 +31,8 @@ public class ApplicationRunner {
             for (Cell[] cells : ISLAND) {
                 for (Cell cell : cells) {
                     logger.setCell(cell);
-                    runEvent(cell);
+                    move(cell);
+                    eat(cell);
                 }
             }
             try {
@@ -40,7 +44,26 @@ public class ApplicationRunner {
         }
     }
 
-    private synchronized static void runEvent(Cell cell) {
+    private static void eat(Cell cell) {
+        for (Map.Entry<Kind, List<Animal>> pair : cell.getAnimals().entrySet()) {
+            List<Animal> animals = pair.getValue();
+            for (Animal animal : animals) {
+                if (animal instanceof Predator) {
+                    Kind[] herbivores = Kind.getHerbivores();
+                    for (Kind herbivoreKind : herbivores) {
+                        ((Predator) animal).eat(cell.getAnimals().get(herbivoreKind));
+                    }
+                } else if (animal instanceof Herbivore) {
+                    List<Animal> plants = cell.getAnimals().get(PLANT);
+                    if (plants != null) {
+                        ((Herbivore) animal).eat(plants);
+                    }
+                }
+            }
+        }
+    }
+
+    private synchronized static void move(Cell cell) {
         for (Map.Entry<Kind, List<Animal>> pair : cell.getAnimals().entrySet()) {
             List<Animal> animals = pair.getValue();
             Iterator<Animal> iterator = animals.iterator();
@@ -51,5 +74,4 @@ public class ApplicationRunner {
             }
         }
     }
-
 }

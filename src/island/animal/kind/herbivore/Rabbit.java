@@ -7,5 +7,4 @@ public class Rabbit extends Herbivore {
     public Rabbit(Fields fields) {
         super(fields);
     }
-
 }

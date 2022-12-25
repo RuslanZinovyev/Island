@@ -2,9 +2,9 @@ package island.animal.kind.predator;
 
 import island.animal.Fields;
 
-public class Anaconda extends Predator {
+public class Snake extends Predator {
 
-    public Anaconda(Fields fields) {
+    public Snake(Fields fields) {
         super(fields);
     }
 

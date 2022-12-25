@@ -26,7 +26,7 @@ public class Factory {
         Animal animal =
                 switch (kind) {
                     case WOLF -> new Wolf(Configuration.animalFields.get(WOLF));
-                    case ANACONDA -> new Anaconda(Configuration.animalFields.get(ANACONDA));
+                    case SNAKE -> new Snake(Configuration.animalFields.get(SNAKE));
                     case FOX -> new Fox(Configuration.animalFields.get(FOX));
                     case BEAR -> new Bear(Configuration.animalFields.get(BEAR));
                     case EAGLE -> new Eagle(Configuration.animalFields.get(EAGLE));
