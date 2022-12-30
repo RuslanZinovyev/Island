@@ -32,7 +32,7 @@ public class Configuration {
         animalFields.put(BOAR, new Fields("Boar", " \uD83D\uDC17", 400, 2, 50, 50, true));
         animalFields.put(BUFFALO, new Fields("Buffalo", " \uD83D\uDC03", 700, 3, 100, 10, true));
         animalFields.put(DUCK, new Fields("Duck", " \uD83E\uDD86", 1, 4, 0.15, 200, true));
-        animalFields.put(CATERPILLAR, new Fields("Caterpillar", " \uD83D\uDC1B", 0.01f, 1, 0, 1000, true));
+        animalFields.put(CATERPILLAR, new Fields("Caterpillar", " \uD83D\uDC1B", 0.01f, 1, 1, 1000, true));
         animalFields.put(PLANT, new Fields("Plant", " \uD83E\uDEB4", 1, 0, 0, 200, true));
         // WOLF
         probabilities[WOLF.ordinal()][SNAKE.ordinal()] = 0;
