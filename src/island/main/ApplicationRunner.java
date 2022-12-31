@@ -11,6 +11,7 @@ import island.model.IslandGenerator;
 import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
+import java.util.concurrent.ThreadLocalRandom;
 
 import static island.animal.kind.enumerator.Kind.PLANT;
 import static island.model.IslandGenerator.ISLAND;
@@ -33,6 +34,7 @@ public class ApplicationRunner {
                     logger.setCell(cell);
                     move(cell);
                     eat(cell);
+                    breed(cell);
                 }
             }
             try {
@@ -42,6 +44,9 @@ public class ApplicationRunner {
             }
             logger.printInfo(day);
         }
+    }
+
+    private static void breed(Cell cell) {
     }
 
     private static void eat(Cell cell) {
@@ -56,7 +61,10 @@ public class ApplicationRunner {
                 } else if (animal instanceof Herbivore) {
                     List<Animal> plants = cell.getAnimals().get(PLANT);
                     if (plants != null) {
-                        ((Herbivore) animal).eat(plants);
+                        boolean isGoingToEat = ThreadLocalRandom.current().nextBoolean();
+                        if (isGoingToEat) {
+                            ((Herbivore) animal).eat(plants);
+                        }
                     }
                 }
             }

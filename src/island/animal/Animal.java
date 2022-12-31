@@ -9,6 +9,7 @@ import java.util.concurrent.ThreadLocalRandom;
 
 public abstract class Animal {
 
+    public static final String PLANT = "Plant";
     private final Fields fields;
 
     public Animal(Fields fields) {
@@ -20,7 +21,7 @@ public abstract class Animal {
     }
 
     public boolean move(Cell cell) {
-        if (fields.getName().equals("Plant")) {
+        if (fields.getName().equals(PLANT)) {
             return false;
         }
         int newRow = (cell.getRow() + fields.getSpeed()) % Configuration.row;
