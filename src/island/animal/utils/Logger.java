@@ -1,96 +1,136 @@
 package island.animal.utils;
 
 import island.animal.Animal;
-import island.animal.kind.enumerator.Kind;
 import island.location.Cell;
 
-import java.util.List;
-import java.util.Map;
-
 import static island.animal.kind.enumerator.Kind.*;
-import static island.animal.kind.enumerator.Kind.FOX;
 import static island.model.IslandGenerator.ISLAND;
 
 public class Logger {
-    private static int totalCount = 0;
-    private Cell cell;
-
-    public void setCell(Cell cell) {
-        this.cell = cell;
-    }
 
     public void printInfo(int day) {
         int wolfAmount = 0;
-        int anacondaAmount = 0;
-        int foxAmount = 0;
-        int bearAmount = 0;
-        int eagleAmount = 0;
-        int horseAmount = 0;
-        int deerAmount = 0;
-        int rabbitAmount = 0;
-        int mouseAmount = 0;
-        int goatAmount = 0;
-        int sheepAmount = 0;
-        int boarAmount = 0;
-        int buffaloAmount = 0;
-        int duckAmount = 0;
-        int caterpillarAmount = 0;
-        int plantAmount = 0;
-        // Details for each cell
-        for (int i = 0; i < ISLAND.length; i++) {
-            for (int j = 0; j < ISLAND[i].length; j++) {
+        long wolfMoveCounter = 0;
 
-                wolfAmount += ISLAND[i][j].getAnimals().get(WOLF).size();
-                anacondaAmount += ISLAND[i][j].getAnimals().get(SNAKE).size();
-                foxAmount += ISLAND[i][j].getAnimals().get(FOX).size();
-                bearAmount += ISLAND[i][j].getAnimals().get(BEAR).size();
-                eagleAmount += ISLAND[i][j].getAnimals().get(EAGLE).size();
-                horseAmount += ISLAND[i][j].getAnimals().get(HORSE).size();
-                deerAmount += ISLAND[i][j].getAnimals().get(DEER).size();
-                rabbitAmount += ISLAND[i][j].getAnimals().get(RABBIT).size();
-                mouseAmount += ISLAND[i][j].getAnimals().get(MOUSE).size();
-                goatAmount += ISLAND[i][j].getAnimals().get(GOAT).size();
-                sheepAmount += ISLAND[i][j].getAnimals().get(SHEEP).size();
-                boarAmount += ISLAND[i][j].getAnimals().get(BOAR).size();
-                buffaloAmount += ISLAND[i][j].getAnimals().get(BUFFALO).size();
-                duckAmount += ISLAND[i][j].getAnimals().get(DUCK).size();
-                caterpillarAmount += ISLAND[i][j].getAnimals().get(CATERPILLAR).size();
-                plantAmount += ISLAND[i][j].getAnimals().get(PLANT).size();
+        int snakeAmount = 0;
+        long snakeMoveCounter = 0;
+
+        int foxAmount = 0;
+        long foxMoveCounter = 0;
+
+        int bearAmount = 0;
+        long bearMoveCounter = 0;
+
+        int eagleAmount = 0;
+        long eagleMoveCounter = 0;
+
+        int horseAmount = 0;
+        long horseMoveCounter = 0;
+
+        int deerAmount = 0;
+        long deerMoveCounter = 0;
+
+        int rabbitAmount = 0;
+        long rabbitMoveCounter = 0;
+
+        int mouseAmount = 0;
+        long mouseMoveCounter = 0;
+
+        int goatAmount = 0;
+        long goatMoveCounter = 0;
+
+        int sheepAmount = 0;
+        long sheepMoveCounter = 0;
+
+        int boarAmount = 0;
+        long boarMoveCounter = 0;
+
+        int buffaloAmount = 0;
+        long buffaloMoveCounter = 0;
+
+        int duckAmount = 0;
+        long duckMoveCounter = 0;
+
+        int caterpillarAmount = 0;
+        long caterpillarMoveCounter = 0;
+
+        int plantAmount = 0;
+
+        for (Cell[] cells : ISLAND) {
+            for (Cell cell : cells) {
+
+                wolfAmount += cell.getAnimals().get(WOLF).size();
+                wolfMoveCounter += cell.getAnimals().get(WOLF).stream().mapToInt(Animal::getMoveCount).sum();
+
+                snakeAmount += cell.getAnimals().get(SNAKE).size();
+                snakeMoveCounter += cell.getAnimals().get(SNAKE).stream().mapToInt(Animal::getMoveCount).sum();
+
+                foxAmount += cell.getAnimals().get(FOX).size();
+                foxMoveCounter += cell.getAnimals().get(FOX).stream().mapToInt(Animal::getMoveCount).sum();
+
+                bearAmount += cell.getAnimals().get(BEAR).size();
+                bearMoveCounter += cell.getAnimals().get(BEAR).stream().mapToInt(Animal::getMoveCount).sum();
+
+                eagleAmount += cell.getAnimals().get(EAGLE).size();
+                eagleMoveCounter += cell.getAnimals().get(EAGLE).stream().mapToInt(Animal::getMoveCount).sum();
+
+                horseAmount += cell.getAnimals().get(HORSE).size();
+                horseMoveCounter += cell.getAnimals().get(HORSE).stream().mapToInt(Animal::getMoveCount).sum();
+
+                deerAmount += cell.getAnimals().get(DEER).size();
+                deerMoveCounter += cell.getAnimals().get(DEER).stream().mapToInt(Animal::getMoveCount).sum();
+
+                rabbitAmount += cell.getAnimals().get(RABBIT).size();
+                rabbitMoveCounter += cell.getAnimals().get(RABBIT).stream().mapToInt(Animal::getMoveCount).sum();
+
+                mouseAmount += cell.getAnimals().get(MOUSE).size();
+                mouseMoveCounter += cell.getAnimals().get(MOUSE).stream().mapToInt(Animal::getMoveCount).sum();
+
+                goatAmount += cell.getAnimals().get(GOAT).size();
+                goatMoveCounter += cell.getAnimals().get(GOAT).stream().mapToInt(Animal::getMoveCount).sum();
+
+                sheepAmount += cell.getAnimals().get(SHEEP).size();
+                sheepMoveCounter += cell.getAnimals().get(SHEEP).stream().mapToInt(Animal::getMoveCount).sum();
+
+                boarAmount += cell.getAnimals().get(BOAR).size();
+                boarMoveCounter += cell.getAnimals().get(BOAR).stream().mapToInt(Animal::getMoveCount).sum();
+
+                buffaloAmount += cell.getAnimals().get(BUFFALO).size();
+                buffaloMoveCounter += cell.getAnimals().get(BUFFALO).stream().mapToInt(Animal::getMoveCount).sum();
+
+                duckAmount += cell.getAnimals().get(DUCK).size();
+                duckMoveCounter += cell.getAnimals().get(DUCK).stream().mapToInt(Animal::getMoveCount).sum();
+
+                caterpillarAmount += cell.getAnimals().get(CATERPILLAR).size();
+                caterpillarMoveCounter += cell.getAnimals().get(CATERPILLAR).stream().mapToInt(Animal::getMoveCount).sum();
+
+                plantAmount += cell.getAnimals().get(PLANT).size();
 
             }
         }
         System.out.printf("Day: %d\n", day);
-        print(" \uD83D\uDC3A", wolfAmount, WOLF);
-        print(" \uD83D\uDC0D", anacondaAmount, SNAKE);
-        print(" \uD83E\uDD8A", foxAmount, FOX);
-        print(" \uD83D\uDC3B", bearAmount, BEAR);
-        print(" \uD83E\uDD85", eagleAmount, EAGLE);
-        print(" \uD83D\uDC0E", horseAmount, HORSE);
-        print(" \uD83E\uDD8C", deerAmount, DEER);
-        print(" \uD83D\uDC07", rabbitAmount, RABBIT);
-        print(" \uD83D\uDC01", mouseAmount, MOUSE);
-        print(" \uD83D\uDC10", goatAmount, GOAT);
-        print(" \uD83D\uDC11", sheepAmount, SHEEP);
-        print(" \uD83D\uDC17", boarAmount, BOAR);
-        print(" \uD83D\uDC03", buffaloAmount, BUFFALO);
-        print(" \uD83E\uDD86", duckAmount, DUCK);
-        print(" \uD83D\uDC1B", caterpillarAmount, CATERPILLAR);
-        print(" \uD83E\uDEB4", plantAmount, PLANT);
+        print(" \uD83D\uDC3A", wolfAmount, wolfMoveCounter);
+        print(" \uD83D\uDC0D", snakeAmount, snakeMoveCounter);
+        print(" \uD83E\uDD8A", foxAmount, foxMoveCounter);
+        print(" \uD83D\uDC3B", bearAmount, bearMoveCounter);
+        print(" \uD83E\uDD85", eagleAmount, eagleMoveCounter);
+        print(" \uD83D\uDC0E", horseAmount, horseMoveCounter);
+        print(" \uD83E\uDD8C", deerAmount, deerMoveCounter);
+        print(" \uD83D\uDC07", rabbitAmount, rabbitMoveCounter);
+        print(" \uD83D\uDC01", mouseAmount, mouseMoveCounter);
+        print(" \uD83D\uDC10", goatAmount, goatMoveCounter);
+        print(" \uD83D\uDC11", sheepAmount, sheepMoveCounter);
+        print(" \uD83D\uDC17", boarAmount, boarMoveCounter);
+        print(" \uD83D\uDC03", buffaloAmount, buffaloMoveCounter);
+        print(" \uD83E\uDD86", duckAmount, duckMoveCounter);
+        print(" \uD83D\uDC1B", caterpillarAmount, caterpillarMoveCounter);
+        print(" \uD83E\uDEB4", plantAmount, 0);
     }
 
-    private void printTotal(int totalCount) {
-        System.out.printf("Общее количество животных на острове = %d", totalCount);
-    }
-
-    private void print(String icon, int amount, Kind kind) {
-
-        for (Map.Entry<Kind, List<Animal>> pair : cell.getAnimals().entrySet()) {
-            List<Animal> animals = pair.getValue();
-        }
-
+    private void print(String icon, int amount, long moveCounter) {
         System.out.printf(
                 "%s[Общее количество = %d, Количество погибших = %d, Количество перемещений = %d, Количество новорожденных = %d]\n",
-                icon, amount, 0, amount - cell.getAnimals().get(kind).size(), 0
+                icon, amount, 0, moveCounter, 0
         );
     }
 }

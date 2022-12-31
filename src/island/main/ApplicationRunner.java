@@ -31,7 +31,6 @@ public class ApplicationRunner {
             day++;
             for (Cell[] cells : ISLAND) {
                 for (Cell cell : cells) {
-                    logger.setCell(cell);
                     move(cell);
                     eat(cell);
                     breed(cell);

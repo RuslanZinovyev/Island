@@ -11,6 +11,7 @@ public abstract class Animal {
 
     public static final String PLANT = "Plant";
     private final Fields fields;
+    private int moveCount = 0;
 
     public Animal(Fields fields) {
         this.fields = fields;
@@ -18,6 +19,10 @@ public abstract class Animal {
 
     public Fields getFields() {
         return fields;
+    }
+
+    public int getMoveCount() {
+        return moveCount;
     }
 
     public boolean move(Cell cell) {
@@ -36,6 +41,7 @@ public abstract class Animal {
         if (isMove) {
             Kind kind = Kind.valueOf(this.getClass().getSimpleName().toUpperCase());
             IslandGenerator.ISLAND[newRow][newColumn].getAnimals().get(kind).add(this);
+            moveCount++;
         }
 
         return isMove;
