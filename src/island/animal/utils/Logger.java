@@ -14,6 +14,7 @@ public class Logger {
 
         int snakeAmount = 0;
         long snakeMoveCounter = 0;
+        long snakeDeath = 0;
 
         int foxAmount = 0;
         long foxMoveCounter = 0;
@@ -109,28 +110,28 @@ public class Logger {
             }
         }
         System.out.printf("Day: %d\n", day);
-        print(" \uD83D\uDC3A", wolfAmount, wolfMoveCounter);
-        print(" \uD83D\uDC0D", snakeAmount, snakeMoveCounter);
-        print(" \uD83E\uDD8A", foxAmount, foxMoveCounter);
-        print(" \uD83D\uDC3B", bearAmount, bearMoveCounter);
-        print(" \uD83E\uDD85", eagleAmount, eagleMoveCounter);
-        print(" \uD83D\uDC0E", horseAmount, horseMoveCounter);
-        print(" \uD83E\uDD8C", deerAmount, deerMoveCounter);
-        print(" \uD83D\uDC07", rabbitAmount, rabbitMoveCounter);
-        print(" \uD83D\uDC01", mouseAmount, mouseMoveCounter);
-        print(" \uD83D\uDC10", goatAmount, goatMoveCounter);
-        print(" \uD83D\uDC11", sheepAmount, sheepMoveCounter);
-        print(" \uD83D\uDC17", boarAmount, boarMoveCounter);
-        print(" \uD83D\uDC03", buffaloAmount, buffaloMoveCounter);
-        print(" \uD83E\uDD86", duckAmount, duckMoveCounter);
-        print(" \uD83D\uDC1B", caterpillarAmount, caterpillarMoveCounter);
-        print(" \uD83E\uDEB4", plantAmount, 0);
+        print(" \uD83D\uDC3A", wolfAmount, wolfMoveCounter, 0);
+        print(" \uD83D\uDC0D", snakeAmount, snakeMoveCounter, snakeDeath);
+        print(" \uD83E\uDD8A", foxAmount, foxMoveCounter, 0);
+        print(" \uD83D\uDC3B", bearAmount, bearMoveCounter, 0);
+        print(" \uD83E\uDD85", eagleAmount, eagleMoveCounter, 0);
+        print(" \uD83D\uDC0E", horseAmount, horseMoveCounter, 0);
+        print(" \uD83E\uDD8C", deerAmount, deerMoveCounter, 0);
+        print(" \uD83D\uDC07", rabbitAmount, rabbitMoveCounter, 0);
+        print(" \uD83D\uDC01", mouseAmount, mouseMoveCounter, 0);
+        print(" \uD83D\uDC10", goatAmount, goatMoveCounter, 0);
+        print(" \uD83D\uDC11", sheepAmount, sheepMoveCounter, 0);
+        print(" \uD83D\uDC17", boarAmount, boarMoveCounter, 0);
+        print(" \uD83D\uDC03", buffaloAmount, buffaloMoveCounter, 0);
+        print(" \uD83E\uDD86", duckAmount, duckMoveCounter, 0);
+        print(" \uD83D\uDC1B", caterpillarAmount, caterpillarMoveCounter, 0);
+        print(" \uD83E\uDEB4", plantAmount, 0, 0);
     }
 
-    private void print(String icon, int amount, long moveCounter) {
+    private void print(String icon, int amount, long moveCounter, long deathCounter) {
         System.out.printf(
                 "%s[Общее количество = %d, Количество погибших = %d, Количество перемещений = %d, Количество новорожденных = %d]\n",
-                icon, amount, 0, moveCounter, 0
+                icon, amount, deathCounter, moveCounter, 0
         );
     }
 }

@@ -15,9 +15,9 @@ public abstract class Predator extends Animal {
         super(fields);
     }
 
-    public void eat(List<Animal> herbivores) {
+    public void eat(List<Animal> animals) {
         int randomNumber;
-        Iterator<Animal> iterator = herbivores.iterator();
+        Iterator<Animal> iterator = animals.iterator();
         while (iterator.hasNext()) {
             Animal animal = iterator.next();
             randomNumber = ThreadLocalRandom.current().nextInt(100);

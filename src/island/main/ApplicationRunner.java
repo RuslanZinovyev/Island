@@ -50,17 +50,20 @@ public class ApplicationRunner {
 
     private static void eat(Cell cell) {
         for (Map.Entry<Kind, List<Animal>> pair : cell.getAnimals().entrySet()) {
+            boolean isGoingToEat = ThreadLocalRandom.current().nextBoolean();
             List<Animal> animals = pair.getValue();
             for (Animal animal : animals) {
                 if (animal instanceof Predator) {
-                    Kind[] herbivores = Kind.getHerbivores();
-                    for (Kind herbivoreKind : herbivores) {
-                        ((Predator) animal).eat(cell.getAnimals().get(herbivoreKind));
+                    if (isGoingToEat) {
+                        Kind[] allAnimals = Kind.getAnimals();
+                        for (Kind eachAnimal : allAnimals) {
+                            ((Predator) animal).eat(cell.getAnimals().get(eachAnimal));
+                        }
+                        ((Predator) animal).eat(animals);
                     }
                 } else if (animal instanceof Herbivore) {
                     List<Animal> plants = cell.getAnimals().get(PLANT);
                     if (plants != null) {
-                        boolean isGoingToEat = ThreadLocalRandom.current().nextBoolean();
                         if (isGoingToEat) {
                             ((Herbivore) animal).eat(plants);
                         }

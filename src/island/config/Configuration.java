@@ -18,22 +18,22 @@ public class Configuration {
     private Configuration() {}
 
     static {
-        animalFields.put(WOLF, new Fields("Wolf", " \uD83D\uDC3A", 50, 3, 8, 30, true));
-        animalFields.put(SNAKE, new Fields("Anaconda", " \uD83D\uDC0D", 15, 1, 3, 30, true));
-        animalFields.put(FOX, new Fields("Fox", " \uD83E\uDD8A", 8, 2, 2, 30, true));
-        animalFields.put(BEAR, new Fields("Bear", " \uD83D\uDC3B", 500, 2, 80, 5, true));
-        animalFields.put(EAGLE, new Fields("Eagle", " \uD83E\uDD85", 6, 3, 1, 20, true));
-        animalFields.put(HORSE, new Fields("Horse", " \uD83D\uDC0E", 400, 4, 60, 20, true));
-        animalFields.put(DEER, new Fields("Deer", " \uD83E\uDD8C", 300, 4, 50, 20, true));
-        animalFields.put(RABBIT, new Fields("Rabbit", " \uD83D\uDC07", 2, 2, 0.45f, 150, true));
-        animalFields.put(MOUSE, new Fields("Mouse", " \uD83D\uDC01", 0.05, 1, 0.01f, 500, true));
-        animalFields.put(GOAT, new Fields("Goat", " \uD83D\uDC10", 60, 3, 10, 140, true));
-        animalFields.put(SHEEP, new Fields("Sheep", " \uD83D\uDC11", 70, 3, 15, 140, true));
-        animalFields.put(BOAR, new Fields("Boar", " \uD83D\uDC17", 400, 2, 50, 50, true));
-        animalFields.put(BUFFALO, new Fields("Buffalo", " \uD83D\uDC03", 700, 3, 100, 10, true));
-        animalFields.put(DUCK, new Fields("Duck", " \uD83E\uDD86", 1, 4, 0.15, 200, true));
-        animalFields.put(CATERPILLAR, new Fields("Caterpillar", " \uD83D\uDC1B", 0.01f, 1, 1, 1000, true));
-        animalFields.put(PLANT, new Fields("Plant", " \uD83E\uDEB4", 1, 0, 0, 200, true));
+        animalFields.put(WOLF, new Fields("Wolf", " \uD83D\uDC3A", 50, 3, 8, 30));
+        animalFields.put(SNAKE, new Fields("Anaconda", " \uD83D\uDC0D", 15, 1, 3, 30));
+        animalFields.put(FOX, new Fields("Fox", " \uD83E\uDD8A", 8, 2, 2, 30));
+        animalFields.put(BEAR, new Fields("Bear", " \uD83D\uDC3B", 500, 2, 80, 5));
+        animalFields.put(EAGLE, new Fields("Eagle", " \uD83E\uDD85", 6, 3, 1, 20));
+        animalFields.put(HORSE, new Fields("Horse", " \uD83D\uDC0E", 400, 4, 60, 20));
+        animalFields.put(DEER, new Fields("Deer", " \uD83E\uDD8C", 300, 4, 50, 20));
+        animalFields.put(RABBIT, new Fields("Rabbit", " \uD83D\uDC07", 2, 2, 0.45f, 150));
+        animalFields.put(MOUSE, new Fields("Mouse", " \uD83D\uDC01", 0.05, 1, 0.01f, 500));
+        animalFields.put(GOAT, new Fields("Goat", " \uD83D\uDC10", 60, 3, 10, 140));
+        animalFields.put(SHEEP, new Fields("Sheep", " \uD83D\uDC11", 70, 3, 15, 140));
+        animalFields.put(BOAR, new Fields("Boar", " \uD83D\uDC17", 400, 2, 50, 50));
+        animalFields.put(BUFFALO, new Fields("Buffalo", " \uD83D\uDC03", 700, 3, 100, 10));
+        animalFields.put(DUCK, new Fields("Duck", " \uD83E\uDD86", 1, 4, 0.15, 200));
+        animalFields.put(CATERPILLAR, new Fields("Caterpillar", " \uD83D\uDC1B", 0.01f, 1, 1, 1000));
+        animalFields.put(PLANT, new Fields("Plant", " \uD83E\uDEB4", 1, 0, 0, 20000));
         // WOLF
         probabilities[WOLF.ordinal()][SNAKE.ordinal()] = 0;
         probabilities[WOLF.ordinal()][FOX.ordinal()] = 0;
