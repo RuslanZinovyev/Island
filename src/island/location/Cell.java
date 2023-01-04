@@ -13,8 +13,8 @@ import java.util.concurrent.ThreadLocalRandom;
 
 public class Cell {
 
-    private int row;
-    private int column;
+    private final int row;
+    private final int column;
     private final Map<Kind, List<Animal>> animals = new ConcurrentHashMap<>();
 
     public Cell(int row, int column) {
@@ -35,18 +35,17 @@ public class Cell {
         return animals;
     }
 
-    public void populateIsland(){
+    public void populateIsland() {
         Kind[] kindSet = Kind.values();
         for (Kind kind : kindSet) {
             int num = getRandomNumberFromRange(0, Configuration.animalFields.get(kind).getMaxCount());
             List<Animal> animalSet = new ArrayList<>();
             for (int i = 0; i < num; i++) {
-                Animal alive = Factory.getInstance().getAnimalByKind(kind);
-                animalSet.add(alive);
+                Animal animal = Factory.getInstance().getAnimalByKind(kind);
+                animalSet.add(animal);
             }
             animals.put(kind, animalSet);
         }
-
     }
 
     private int getRandomNumberFromRange(int min, int max) {
@@ -61,5 +60,4 @@ public class Cell {
                 ", animals=" + animals +
                 '}';
     }
-
 }

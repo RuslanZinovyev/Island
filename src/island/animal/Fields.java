@@ -6,18 +6,16 @@ public class Fields {
     private final String icon;
     private final double weight;
     private final int speed;
-    private final double satiety;
+    private final double maxFoodRequired;
     private final int maxCount;
-    private final boolean isAlive;
 
-    public Fields(String name, String icon, double weight, int speed, double satiety, int maxCount, boolean isAlive) {
+    public Fields(String name, String icon, double weight, int speed, double maxFoodRequired, int maxCount) {
         this.name = name;
         this.icon = icon;
         this.weight = weight;
         this.speed = speed;
-        this.satiety = satiety;
+        this.maxFoodRequired = maxFoodRequired;
         this.maxCount = maxCount;
-        this.isAlive = isAlive;
     }
 
     public String getName() {
@@ -36,17 +34,14 @@ public class Fields {
         return speed;
     }
 
-    public double getSatiety() {
-        return satiety;
+    public double getMaxFoodRequired() {
+        return maxFoodRequired;
     }
 
     public int getMaxCount() {
         return maxCount;
     }
 
-    public boolean isAlive() {
-        return isAlive;
-    }
 
     @Override
     public String toString() {
@@ -55,10 +50,8 @@ public class Fields {
                 ", icon='" + icon + '\'' +
                 ", weight=" + weight +
                 ", speed=" + speed +
-                ", satiety=" + satiety +
+                ", satiety=" + maxFoodRequired +
                 ", maxCount=" + maxCount +
-                ", isAlive=" + isAlive +
                 '}';
     }
-
 }
