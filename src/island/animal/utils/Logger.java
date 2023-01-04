@@ -71,45 +71,45 @@ public class Logger {
         }
     }
 
-    public void countMovesOnCell(Cell[][] island) {
-        for (Cell[] cells : island) {
-            for (Cell cell : cells) {
-                wolfMoveCounter += cell.getAnimals().get(WOLF).stream().mapToInt(Animal::getMoveCount).sum();
-                snakeMoveCounter += cell.getAnimals().get(SNAKE).stream().mapToInt(Animal::getMoveCount).sum();
-                foxMoveCounter += cell.getAnimals().get(FOX).stream().mapToInt(Animal::getMoveCount).sum();
-                bearMoveCounter += cell.getAnimals().get(BEAR).stream().mapToInt(Animal::getMoveCount).sum();
-                eagleMoveCounter += cell.getAnimals().get(EAGLE).stream().mapToInt(Animal::getMoveCount).sum();
-                horseMoveCounter += cell.getAnimals().get(HORSE).stream().mapToInt(Animal::getMoveCount).sum();
-                deerMoveCounter += cell.getAnimals().get(DEER).stream().mapToInt(Animal::getMoveCount).sum();
-                rabbitMoveCounter += cell.getAnimals().get(RABBIT).stream().mapToInt(Animal::getMoveCount).sum();
-                mouseMoveCounter += cell.getAnimals().get(MOUSE).stream().mapToInt(Animal::getMoveCount).sum();
-                goatMoveCounter += cell.getAnimals().get(GOAT).stream().mapToInt(Animal::getMoveCount).sum();
-                sheepMoveCounter += cell.getAnimals().get(SHEEP).stream().mapToInt(Animal::getMoveCount).sum();
-                boarMoveCounter += cell.getAnimals().get(BOAR).stream().mapToInt(Animal::getMoveCount).sum();
-                buffaloMoveCounter += cell.getAnimals().get(BUFFALO).stream().mapToInt(Animal::getMoveCount).sum();
-                duckMoveCounter += cell.getAnimals().get(DUCK).stream().mapToInt(Animal::getMoveCount).sum();
-                caterpillarMoveCounter += cell.getAnimals().get(CATERPILLAR).stream().mapToInt(Animal::getMoveCount).sum();
-            }
-        }
-    }
+//    public void countMovesOnCell(Cell[][] island) {
+//        for (Cell[] cells : island) {
+//            for (Cell cell : cells) {
+//                wolfMoveCounter += cell.getAnimals().get(WOLF).stream().mapToInt(Animal::getMoveCount).sum();
+//                snakeMoveCounter += cell.getAnimals().get(SNAKE).stream().mapToInt(Animal::getMoveCount).sum();
+//                foxMoveCounter += cell.getAnimals().get(FOX).stream().mapToInt(Animal::getMoveCount).sum();
+//                bearMoveCounter += cell.getAnimals().get(BEAR).stream().mapToInt(Animal::getMoveCount).sum();
+//                eagleMoveCounter += cell.getAnimals().get(EAGLE).stream().mapToInt(Animal::getMoveCount).sum();
+//                horseMoveCounter += cell.getAnimals().get(HORSE).stream().mapToInt(Animal::getMoveCount).sum();
+//                deerMoveCounter += cell.getAnimals().get(DEER).stream().mapToInt(Animal::getMoveCount).sum();
+//                rabbitMoveCounter += cell.getAnimals().get(RABBIT).stream().mapToInt(Animal::getMoveCount).sum();
+//                mouseMoveCounter += cell.getAnimals().get(MOUSE).stream().mapToInt(Animal::getMoveCount).sum();
+//                goatMoveCounter += cell.getAnimals().get(GOAT).stream().mapToInt(Animal::getMoveCount).sum();
+//                sheepMoveCounter += cell.getAnimals().get(SHEEP).stream().mapToInt(Animal::getMoveCount).sum();
+//                boarMoveCounter += cell.getAnimals().get(BOAR).stream().mapToInt(Animal::getMoveCount).sum();
+//                buffaloMoveCounter += cell.getAnimals().get(BUFFALO).stream().mapToInt(Animal::getMoveCount).sum();
+//                duckMoveCounter += cell.getAnimals().get(DUCK).stream().mapToInt(Animal::getMoveCount).sum();
+//                caterpillarMoveCounter += cell.getAnimals().get(CATERPILLAR).stream().mapToInt(Animal::getMoveCount).sum();
+//            }
+//        }
+//    }
 
     public void printInfo(int day) {
         System.out.printf("Day: %d\n", day);
-        print(" \uD83D\uDC3A", wolfAmount, wolfMoveCounter, Wolf.deathCounter);
-        print(" \uD83D\uDC0D", snakeAmount, snakeMoveCounter, Snake.deathCounter);
-        print(" \uD83E\uDD8A", foxAmount, foxMoveCounter, Fox.deathCounter);
-        print(" \uD83D\uDC3B", bearAmount, bearMoveCounter, Bear.deathCounter);
-        print(" \uD83E\uDD85", eagleAmount, eagleMoveCounter, Eagle.deathCounter);
-        print(" \uD83D\uDC0E", horseAmount, horseMoveCounter, Horse.deathCounter);
-        print(" \uD83E\uDD8C", deerAmount, deerMoveCounter, Deer.deathCounter);
-        print(" \uD83D\uDC07", rabbitAmount, rabbitMoveCounter, Rabbit.deathCounter);
-        print(" \uD83D\uDC01", mouseAmount, mouseMoveCounter, Mouse.deathCounter);
-        print(" \uD83D\uDC10", goatAmount, goatMoveCounter, Goat.deathCounter);
-        print(" \uD83D\uDC11", sheepAmount, sheepMoveCounter, Sheep.deathCounter);
-        print(" \uD83D\uDC17", boarAmount, boarMoveCounter, Bear.deathCounter);
-        print(" \uD83D\uDC03", buffaloAmount, buffaloMoveCounter, Buffalo.deathCounter);
-        print(" \uD83E\uDD86", duckAmount, duckMoveCounter, Duck.deathCounter);
-        print(" \uD83D\uDC1B", caterpillarAmount, caterpillarMoveCounter, Caterpillar.deathCounter);
+        print(" \uD83D\uDC3A", wolfAmount, Wolf.moveCounter, Wolf.deathCounter);
+        print(" \uD83D\uDC0D", snakeAmount, Snake.moveCounter, Snake.deathCounter);
+        print(" \uD83E\uDD8A", foxAmount, Fox.moveCounter, Fox.deathCounter);
+        print(" \uD83D\uDC3B", bearAmount, Bear.moveCounter, Bear.deathCounter);
+        print(" \uD83E\uDD85", eagleAmount, Eagle.moveCounter, Eagle.deathCounter);
+        print(" \uD83D\uDC0E", horseAmount, Horse.moveCounter, Horse.deathCounter);
+        print(" \uD83E\uDD8C", deerAmount, Deer.moveCounter, Deer.deathCounter);
+        print(" \uD83D\uDC07", rabbitAmount, Rabbit.moveCounter, Rabbit.deathCounter);
+        print(" \uD83D\uDC01", mouseAmount, Mouse.moveCounter, Mouse.deathCounter);
+        print(" \uD83D\uDC10", goatAmount, Goat.moveCounter, Goat.deathCounter);
+        print(" \uD83D\uDC11", sheepAmount, Sheep.moveCounter, Sheep.deathCounter);
+        print(" \uD83D\uDC17", boarAmount, Bear.moveCounter, Bear.deathCounter);
+        print(" \uD83D\uDC03", buffaloAmount, Buffalo.moveCounter, Buffalo.deathCounter);
+        print(" \uD83E\uDD86", duckAmount, Duck.moveCounter, Duck.deathCounter);
+        print(" \uD83D\uDC1B", caterpillarAmount, Caterpillar.moveCounter, Caterpillar.deathCounter);
         print(" \uD83E\uDEB4", plantAmount, 0, Plant.deathCounter);
     }
 
@@ -158,20 +158,20 @@ public class Logger {
     }
 
     private void clearMoveCounters() {
-        wolfMoveCounter = 0;
-        snakeMoveCounter = 0;
-        foxMoveCounter = 0;
-        bearMoveCounter = 0;
-        eagleMoveCounter = 0;
-        horseMoveCounter = 0;
-        deerMoveCounter = 0;
-        rabbitMoveCounter = 0;
-        mouseMoveCounter = 0;
-        goatMoveCounter = 0;
-        sheepMoveCounter = 0;
-        boarMoveCounter = 0;
-        buffaloMoveCounter = 0;
-        duckMoveCounter = 0;
-        caterpillarMoveCounter = 0;
+        Wolf.moveCounter = 0;
+        Snake.moveCounter = 0;
+        Fox.moveCounter = 0;
+        Bear.moveCounter = 0;
+        Eagle.moveCounter = 0;
+        Horse.moveCounter = 0;
+        Deer.moveCounter = 0;
+        Rabbit.moveCounter = 0;
+        Mouse.moveCounter = 0;
+        Goat.moveCounter = 0;
+        Sheep.moveCounter = 0;
+        Boar.moveCounter = 0;
+        Buffalo.moveCounter = 0;
+        Duck.moveCounter = 0;
+        Caterpillar.moveCounter = 0;
     }
 }

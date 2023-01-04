@@ -18,6 +18,7 @@ public abstract class Predator extends Animal {
         super(fields);
     }
 
+    //TODO this method should be fixed, currently it behaves incorrectly
     public void eat(List<Animal> animals) {
         int randomNumber;
         Iterator<Animal> iterator = animals.iterator();

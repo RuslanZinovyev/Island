@@ -34,7 +34,6 @@ public class ApplicationRunner {
                     breed(cell);
                 }
             }
-            logger.countMovesOnCell(ISLAND);
             try {
                 Thread.sleep(1000);
             } catch (InterruptedException e) {
