@@ -34,7 +34,7 @@ public abstract class Animal {
 
         boolean isMove = ThreadLocalRandom.current().nextBoolean();
 
-        if (newRow >= Configuration.row || newColumn >= Configuration.column || newRow < 0 || newColumn < 0) {
+        if (newRow < 0 || newColumn < 0) {
             isMove = false;
         }
 

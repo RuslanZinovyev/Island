@@ -10,8 +10,8 @@ import static island.animal.kind.enumerator.Kind.*;
 
 public class Configuration {
 
-    public static final int row = 10;
-    public static final int column = 10;
+    public static final int row = 3;
+    public static final int column = 2;
     public static Map<Kind, Fields> animalFields = new HashMap<>();
     public static int[][] probabilities = new int[values().length][values().length];
 
@@ -33,7 +33,7 @@ public class Configuration {
         animalFields.put(BUFFALO, new Fields("Buffalo", " \uD83D\uDC03", 700, 3, 100, 10));
         animalFields.put(DUCK, new Fields("Duck", " \uD83E\uDD86", 1, 4, 0.15, 200));
         animalFields.put(CATERPILLAR, new Fields("Caterpillar", " \uD83D\uDC1B", 0.01f, 1, 1, 1000));
-        animalFields.put(PLANT, new Fields("Plant", " \uD83E\uDEB4", 1, 0, 0, 20000));
+        animalFields.put(PLANT, new Fields("Plant", " \uD83E\uDEB4", 1, 0, 0, 2000));
         // WOLF
         probabilities[WOLF.ordinal()][SNAKE.ordinal()] = 0;
         probabilities[WOLF.ordinal()][FOX.ordinal()] = 0;

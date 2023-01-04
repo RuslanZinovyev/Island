@@ -31,7 +31,9 @@ public class ApplicationRunner {
             day++;
             for (Cell[] cells : ISLAND) {
                 for (Cell cell : cells) {
+                    logger.countAnimalsOnCell(cells);
                     move(cell);
+                    logger.countMovesOnCell(cells);
                     eat(cell);
                     breed(cell);
                 }
@@ -42,6 +44,7 @@ public class ApplicationRunner {
                 throw new RuntimeException(e);
             }
             logger.printInfo(day);
+            logger.clearFields();
         }
     }
 
@@ -73,14 +76,16 @@ public class ApplicationRunner {
         }
     }
 
-    private synchronized static void move(Cell cell) {
+    private static void move(Cell cell) {
         for (Map.Entry<Kind, List<Animal>> pair : cell.getAnimals().entrySet()) {
             List<Animal> animals = pair.getValue();
             Iterator<Animal> iterator = animals.iterator();
             while (iterator.hasNext()) {
                 Animal animal = iterator.next();
                 boolean isMove = animal.move(cell);
-                if (isMove) iterator.remove();
+                if (isMove) {
+                    iterator.remove();
+                }
             }
         }
     }
