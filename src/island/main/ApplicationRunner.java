@@ -16,9 +16,6 @@ import java.util.concurrent.ThreadLocalRandom;
 import static island.animal.kind.enumerator.Kind.PLANT;
 import static island.model.IslandGenerator.ISLAND;
 
-/**
- * The only purpose of this class is to run applications.
- */
 public class ApplicationRunner {
     static int day = 0;
 
@@ -29,15 +26,15 @@ public class ApplicationRunner {
 
         while (true) {
             day++;
+            logger.countAnimalsOnCell(ISLAND);
             for (Cell[] cells : ISLAND) {
                 for (Cell cell : cells) {
-                    logger.countAnimalsOnCell(cells);
                     move(cell);
-                    logger.countMovesOnCell(cells);
                     eat(cell);
                     breed(cell);
                 }
             }
+            logger.countMovesOnCell(ISLAND);
             try {
                 Thread.sleep(1000);
             } catch (InterruptedException e) {
@@ -62,7 +59,6 @@ public class ApplicationRunner {
                         for (Kind eachAnimal : allAnimals) {
                             ((Predator) animal).eat(cell.getAnimals().get(eachAnimal));
                         }
-                        ((Predator) animal).eat(animals);
                     }
                 } else if (animal instanceof Herbivore) {
                     List<Animal> plants = cell.getAnimals().get(PLANT);

@@ -3,7 +3,7 @@ package island.animal.kind.predator;
 import island.animal.Animal;
 import island.animal.Fields;
 import island.animal.kind.enumerator.Kind;
-import island.animal.kind.herbivore.Rabbit;
+import island.animal.kind.herbivore.*;
 import island.config.Configuration;
 
 import java.util.Iterator;
@@ -33,17 +33,36 @@ public abstract class Predator extends Animal {
             if (randomNumber < currentProbability) {
                 this.consumedFood += animal.getFields().getWeight();
                 if (this.getFields().getMaxFoodRequired() >= consumedFood) {
-                    if (animal instanceof Rabbit) {
-                        Rabbit.deathCounter++;
-                    }
+                    countDeath(animal);
                     iterator.remove();
                 } else if (hunger > 7) {
+                    countDeath(animal);
                     iterator.remove();
                 } else {
                     hunger++;
                     break;
                 }
             }
+        }
+    }
+
+    private void countDeath(Animal animal) {
+        switch (animal.getClass().getSimpleName().toUpperCase()) {
+            case "WOLF" -> Wolf.deathCounter++;
+            case "SNAKE" -> Snake.deathCounter++;
+            case "FOX" -> Fox.deathCounter++;
+            case "BEAR" -> Bear.deathCounter++;
+            case "EAGLE" -> Eagle.deathCounter++;
+            case "HORSE" -> Horse.deathCounter++;
+            case "DEER" -> Deer.deathCounter++;
+            case "RABBIT" -> Rabbit.deathCounter++;
+            case "MOUSE" -> Mouse.deathCounter++;
+            case "GOAT" -> Goat.deathCounter++;
+            case "SHEEP" -> Sheep.deathCounter++;
+            case "BOAR" -> Boar.deathCounter++;
+            case "BUFFALO" -> Buffalo.deathCounter++;
+            case "DUCK" -> Duck.deathCounter++;
+            case "CATERPILLAR" -> Caterpillar.deathCounter++;
         }
     }
 }

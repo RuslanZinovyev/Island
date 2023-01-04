@@ -19,7 +19,7 @@ public class Configuration {
 
     static {
         animalFields.put(WOLF, new Fields("Wolf", " \uD83D\uDC3A", 50, 3, 8, 30));
-        animalFields.put(SNAKE, new Fields("Anaconda", " \uD83D\uDC0D", 15, 1, 3, 30));
+        animalFields.put(SNAKE, new Fields("Snake", " \uD83D\uDC0D", 15, 1, 3, 30));
         animalFields.put(FOX, new Fields("Fox", " \uD83E\uDD8A", 8, 2, 2, 30));
         animalFields.put(BEAR, new Fields("Bear", " \uD83D\uDC3B", 500, 2, 80, 5));
         animalFields.put(EAGLE, new Fields("Eagle", " \uD83E\uDD85", 6, 3, 1, 20));
