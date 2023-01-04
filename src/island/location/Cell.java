@@ -41,8 +41,8 @@ public class Cell {
             int num = getRandomNumberFromRange(0, Configuration.animalFields.get(kind).getMaxCount());
             List<Animal> animalSet = new ArrayList<>();
             for (int i = 0; i < num; i++) {
-                Animal alive = Factory.getInstance().getAnimalByKind(kind);
-                animalSet.add(alive);
+                Animal animal = Factory.getInstance().getAnimalByKind(kind);
+                animalSet.add(animal);
             }
             animals.put(kind, animalSet);
         }

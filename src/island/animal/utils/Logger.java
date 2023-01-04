@@ -1,6 +1,5 @@
 package island.animal.utils;
 
-import island.animal.Animal;
 import island.animal.kind.herbivore.*;
 import island.animal.kind.plant.Plant;
 import island.animal.kind.predator.*;
@@ -25,22 +24,6 @@ public class Logger {
     int duckAmount = 0;
     int caterpillarAmount = 0;
     int plantAmount = 0;
-
-    int wolfMoveCounter = 0;
-    int snakeMoveCounter = 0;
-    int foxMoveCounter = 0;
-    int bearMoveCounter = 0;
-    int eagleMoveCounter = 0;
-    int horseMoveCounter = 0;
-    int deerMoveCounter = 0;
-    int rabbitMoveCounter = 0;
-    int mouseMoveCounter = 0;
-    int goatMoveCounter = 0;
-    int sheepMoveCounter = 0;
-    int boarMoveCounter = 0;
-    int buffaloMoveCounter = 0;
-    int duckMoveCounter = 0;
-    int caterpillarMoveCounter = 0;
 
     public void clearFields() {
         clearAmountCounters();
@@ -71,28 +54,6 @@ public class Logger {
         }
     }
 
-//    public void countMovesOnCell(Cell[][] island) {
-//        for (Cell[] cells : island) {
-//            for (Cell cell : cells) {
-//                wolfMoveCounter += cell.getAnimals().get(WOLF).stream().mapToInt(Animal::getMoveCount).sum();
-//                snakeMoveCounter += cell.getAnimals().get(SNAKE).stream().mapToInt(Animal::getMoveCount).sum();
-//                foxMoveCounter += cell.getAnimals().get(FOX).stream().mapToInt(Animal::getMoveCount).sum();
-//                bearMoveCounter += cell.getAnimals().get(BEAR).stream().mapToInt(Animal::getMoveCount).sum();
-//                eagleMoveCounter += cell.getAnimals().get(EAGLE).stream().mapToInt(Animal::getMoveCount).sum();
-//                horseMoveCounter += cell.getAnimals().get(HORSE).stream().mapToInt(Animal::getMoveCount).sum();
-//                deerMoveCounter += cell.getAnimals().get(DEER).stream().mapToInt(Animal::getMoveCount).sum();
-//                rabbitMoveCounter += cell.getAnimals().get(RABBIT).stream().mapToInt(Animal::getMoveCount).sum();
-//                mouseMoveCounter += cell.getAnimals().get(MOUSE).stream().mapToInt(Animal::getMoveCount).sum();
-//                goatMoveCounter += cell.getAnimals().get(GOAT).stream().mapToInt(Animal::getMoveCount).sum();
-//                sheepMoveCounter += cell.getAnimals().get(SHEEP).stream().mapToInt(Animal::getMoveCount).sum();
-//                boarMoveCounter += cell.getAnimals().get(BOAR).stream().mapToInt(Animal::getMoveCount).sum();
-//                buffaloMoveCounter += cell.getAnimals().get(BUFFALO).stream().mapToInt(Animal::getMoveCount).sum();
-//                duckMoveCounter += cell.getAnimals().get(DUCK).stream().mapToInt(Animal::getMoveCount).sum();
-//                caterpillarMoveCounter += cell.getAnimals().get(CATERPILLAR).stream().mapToInt(Animal::getMoveCount).sum();
-//            }
-//        }
-//    }
-
     public void printInfo(int day) {
         System.out.printf("Day: %d\n", day);
         print(" \uD83D\uDC3A", wolfAmount, Wolf.moveCounter, Wolf.deathCounter);
@@ -115,7 +76,7 @@ public class Logger {
 
     private void print(String icon, int amount, int moveCounter, int deathCounter) {
         System.out.printf(
-                "%s[Общее количество = %d, Количество погибших = %d, Количество перемещений = %d, Количество новорожденных = %d]\n",
+                "%s[Общее количество = %d, Количество смертей = %d, Количество перемещений = %d, Количество новорожденных = %d]\n",
                 icon, amount, deathCounter, moveCounter, 0
         );
     }
