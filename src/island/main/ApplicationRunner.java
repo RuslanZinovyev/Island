@@ -14,6 +14,7 @@ import java.util.Map;
 import java.util.concurrent.ThreadLocalRandom;
 
 import static island.animal.kind.enumerator.Kind.PLANT;
+import static island.animal.utils.Counter.countDeath;
 import static island.model.IslandGenerator.ISLAND;
 
 public class ApplicationRunner {
@@ -49,21 +50,35 @@ public class ApplicationRunner {
 
     private static void eat(Cell cell) {
         for (Map.Entry<Kind, List<Animal>> pair : cell.getAnimals().entrySet()) {
-            boolean isGoingToEat = ThreadLocalRandom.current().nextBoolean();
+
+            boolean isGoingToEat;
             List<Animal> animals = pair.getValue();
-            for (Animal animal : animals) {
+            Iterator<Animal> iterator = animals.iterator();
+
+            while (iterator.hasNext()) {
+                Animal animal = iterator.next();
                 if (animal instanceof Predator) {
+                    isGoingToEat = ThreadLocalRandom.current().nextBoolean();
                     if (isGoingToEat) {
                         Kind[] allAnimals = Kind.getAnimals();
                         for (Kind eachAnimal : allAnimals) {
-                            ((Predator) animal).eat(cell.getAnimals().get(eachAnimal));
+                            if (((Predator) animal).eat(cell.getAnimals().get(eachAnimal))) {
+                                iterator.remove();
+                                countDeath(animal);
+                                break;
+                            }
                         }
                     }
                 } else if (animal instanceof Herbivore) {
                     List<Animal> plants = cell.getAnimals().get(PLANT);
                     if (plants != null) {
+                        isGoingToEat = ThreadLocalRandom.current().nextBoolean();
                         if (isGoingToEat) {
-                            ((Herbivore) animal).eat(plants);
+                            if (((Herbivore) animal).eat(plants)) {
+                                iterator.remove();
+                                countDeath(animal);
+                                break;
+                            }
                         }
                     }
                 }

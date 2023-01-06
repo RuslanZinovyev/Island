@@ -116,6 +116,7 @@ public class Logger {
         Buffalo.deathCounter = 0;
         Duck.deathCounter = 0;
         Caterpillar.deathCounter = 0;
+        Plant.deathCounter = 0;
     }
 
     private void clearMoveCounters() {

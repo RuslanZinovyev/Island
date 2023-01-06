@@ -1,13 +1,12 @@
 package island.animal;
 
 import island.animal.kind.enumerator.Kind;
-import island.animal.kind.herbivore.*;
-import island.animal.kind.predator.*;
 import island.config.Configuration;
 import island.location.Cell;
 import island.model.IslandGenerator;
 
 import java.util.concurrent.ThreadLocalRandom;
+import static island.animal.utils.Counter.countMoves;
 
 public abstract class Animal {
 
@@ -48,25 +47,4 @@ public abstract class Animal {
     public String toString() {
         return fields.getIcon();
     }
-
-    private void countMoves(Kind kind) {
-        switch (kind) {
-            case WOLF -> Wolf.moveCounter++;
-            case SNAKE -> Snake.moveCounter++;
-            case FOX -> Fox.moveCounter++;
-            case BEAR -> Bear.moveCounter++;
-            case EAGLE -> Eagle.moveCounter++;
-            case HORSE -> Horse.moveCounter++;
-            case DEER -> Deer.moveCounter++;
-            case RABBIT -> Rabbit.moveCounter++;
-            case MOUSE -> Mouse.moveCounter++;
-            case GOAT -> Goat.moveCounter++;
-            case SHEEP -> Sheep.moveCounter++;
-            case BOAR -> Boar.moveCounter++;
-            case BUFFALO -> Buffalo.moveCounter++;
-            case DUCK -> Duck.moveCounter++;
-            case CATERPILLAR -> Caterpillar.moveCounter++;
-        }
-    }
-
 }
