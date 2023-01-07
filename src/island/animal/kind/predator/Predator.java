@@ -19,7 +19,15 @@ public abstract class Predator extends Animal {
         super(fields);
     }
 
-    public boolean eat(List<Animal> animals) {
+    public int getHunger() {
+        return hunger;
+    }
+
+    public void increaseHunger() {
+        this.hunger++;
+    }
+
+    public void eat(List<Animal> animals) {
         int randomNumber;
         Iterator<Animal> iterator = animals.iterator();
 
@@ -36,16 +44,10 @@ public abstract class Predator extends Animal {
                 if (this.getFields().getMaxFoodRequired() >= consumedFood) {
                     countDeath(animal);
                     iterator.remove();
-                } else if (hunger > 7) {
-                    countDeath(animal);
-                    return true;
                 } else {
-                    hunger++;
                     break;
                 }
             }
         }
-        return false;
     }
-
 }

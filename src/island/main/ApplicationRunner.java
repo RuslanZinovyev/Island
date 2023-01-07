@@ -18,14 +18,15 @@ import static island.animal.utils.Counter.countDeath;
 import static island.model.IslandGenerator.ISLAND;
 
 public class ApplicationRunner {
-    static int day = 0;
+    public static final String GAME_OVER = "GAME OVER!!!";
+    public static int day = 0;
 
     public static void main(String[] args) {
         IslandGenerator islandGenerator = new IslandGenerator();
         Logger logger = new Logger();
         islandGenerator.initialize();
 
-        while (true) {
+        while (logger.countAnimalsOnIsland(ISLAND) != 0) {
             day++;
             logger.countAnimalsOnCell(ISLAND);
             for (Cell[] cells : ISLAND) {
@@ -43,6 +44,7 @@ public class ApplicationRunner {
             logger.printInfo(day);
             logger.clearFields();
         }
+        System.out.println(GAME_OVER);
     }
 
     private static void breed(Cell cell) {
@@ -62,24 +64,31 @@ public class ApplicationRunner {
                     if (isGoingToEat) {
                         Kind[] allAnimals = Kind.getAnimals();
                         for (Kind eachAnimal : allAnimals) {
-                            if (((Predator) animal).eat(cell.getAnimals().get(eachAnimal))) {
-                                iterator.remove();
-                                countDeath(animal);
-                                break;
-                            }
+                            ((Predator) animal).eat(cell.getAnimals().get(eachAnimal));
                         }
+                    } else if (((Predator) animal).getHunger() > 7) {
+                        iterator.remove();
+                        countDeath(animal);
+                        break;
+                    } else {
+                        ((Predator) animal).increaseHunger();
                     }
                 } else if (animal instanceof Herbivore) {
                     List<Animal> plants = cell.getAnimals().get(PLANT);
-                    if (plants != null) {
+                    if (plants.size() != 0) {
                         isGoingToEat = ThreadLocalRandom.current().nextBoolean();
                         if (isGoingToEat) {
-                            if (((Herbivore) animal).eat(plants)) {
-                                iterator.remove();
-                                countDeath(animal);
-                                break;
-                            }
+                            ((Herbivore) animal).eat(plants);
+                        } else if (((Herbivore) animal).getHunger() > 7) {
+                            iterator.remove();
+                            countDeath(animal);
+                            break;
+                        } else {
+                            ((Herbivore) animal).increaseHunger();
                         }
+                    } else {
+                        iterator.remove();
+                        countDeath(animal);
                     }
                 }
             }

@@ -16,26 +16,26 @@ public abstract class Herbivore extends Animal {
         super(fields);
     }
 
-    public boolean eat(List<Animal> plants) {
+    public int getHunger() {
+        return hunger;
+    }
+
+    public void increaseHunger() {
+        this.hunger++;
+    }
+
+    public void eat(List<Animal> plants) {
         Iterator<Animal> iterator = plants.iterator();
-        if (plants.size() == 0) {
-            return true;
-        }
         while (iterator.hasNext()) {
             Animal plant = iterator.next();
             this.consumedFood += 1;
             if (this.getFields().getMaxFoodRequired() >= consumedFood) {
                 iterator.remove();
                 countDeath(plant);
-            } else if (hunger > 7) {
-                countDeath(this);
-                return true;
             } else {
-                hunger++;
                 break;
             }
         }
-        return false;
     }
 
     public static void countDeath(Animal animal) {

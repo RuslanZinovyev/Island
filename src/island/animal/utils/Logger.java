@@ -1,5 +1,6 @@
 package island.animal.utils;
 
+import island.animal.kind.enumerator.Kind;
 import island.animal.kind.herbivore.*;
 import island.animal.kind.plant.Plant;
 import island.animal.kind.predator.*;
@@ -52,6 +53,19 @@ public class Logger {
                 plantAmount += cell.getAnimals().get(PLANT).size();
             }
         }
+    }
+
+    public int countAnimalsOnIsland(Cell[][] island) {
+        int allAnimals = 0;
+        for (Cell[] cells : island) {
+            for (Cell cell : cells) {
+                Kind[] kinds = Kind.values();
+                for (Kind kind : kinds) {
+                    allAnimals += cell.getAnimals().get(kind).size();
+                }
+            }
+        }
+        return allAnimals;
     }
 
     public void printInfo(int day) {
