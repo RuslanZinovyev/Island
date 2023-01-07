@@ -20,8 +20,9 @@ public abstract class Herbivore extends Animal {
         return hunger;
     }
 
-    public void increaseHunger() {
+    public void gettingHungry() {
         this.hunger++;
+        this.consumedFood--;
     }
 
     public void eat(List<Animal> plants) {

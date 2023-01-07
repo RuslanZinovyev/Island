@@ -81,7 +81,7 @@ public class Logger {
         print(" \uD83D\uDC01", mouseAmount, Mouse.moveCounter, Mouse.deathCounter);
         print(" \uD83D\uDC10", goatAmount, Goat.moveCounter, Goat.deathCounter);
         print(" \uD83D\uDC11", sheepAmount, Sheep.moveCounter, Sheep.deathCounter);
-        print(" \uD83D\uDC17", boarAmount, Bear.moveCounter, Bear.deathCounter);
+        print(" \uD83D\uDC17", boarAmount, Boar.moveCounter, Boar.deathCounter);
         print(" \uD83D\uDC03", buffaloAmount, Buffalo.moveCounter, Buffalo.deathCounter);
         print(" \uD83E\uDD86", duckAmount, Duck.moveCounter, Duck.deathCounter);
         print(" \uD83D\uDC1B", caterpillarAmount, Caterpillar.moveCounter, Caterpillar.deathCounter);

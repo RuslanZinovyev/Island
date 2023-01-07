@@ -23,8 +23,9 @@ public abstract class Predator extends Animal {
         return hunger;
     }
 
-    public void increaseHunger() {
+    public void gettingHungry() {
         this.hunger++;
+        this.consumedFood -= 10;
     }
 
     public void eat(List<Animal> animals) {
@@ -42,8 +43,8 @@ public abstract class Predator extends Animal {
             if (randomNumber < currentProbability) {
                 this.consumedFood += animal.getFields().getWeight();
                 if (this.getFields().getMaxFoodRequired() >= consumedFood) {
-                    countDeath(animal);
                     iterator.remove();
+                    countDeath(animal);
                 } else {
                     break;
                 }

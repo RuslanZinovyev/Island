@@ -18,7 +18,7 @@ import static island.animal.utils.Counter.countDeath;
 import static island.model.IslandGenerator.ISLAND;
 
 public class ApplicationRunner {
-    public static final String GAME_OVER = "GAME OVER!!!";
+    public static final String GAME_OVER = "\nGAME OVER!!!";
     public static int day = 0;
 
     public static void main(String[] args) {
@@ -45,6 +45,7 @@ public class ApplicationRunner {
             logger.clearFields();
         }
         System.out.println(GAME_OVER);
+        System.out.printf("All the animals were dead on %d day", day);
     }
 
     private static void breed(Cell cell) {
@@ -71,7 +72,7 @@ public class ApplicationRunner {
                         countDeath(animal);
                         break;
                     } else {
-                        ((Predator) animal).increaseHunger();
+                        ((Predator) animal).gettingHungry();
                     }
                 } else if (animal instanceof Herbivore) {
                     List<Animal> plants = cell.getAnimals().get(PLANT);
@@ -84,7 +85,7 @@ public class ApplicationRunner {
                             countDeath(animal);
                             break;
                         } else {
-                            ((Herbivore) animal).increaseHunger();
+                            ((Herbivore) animal).gettingHungry();
                         }
                     } else {
                         iterator.remove();
