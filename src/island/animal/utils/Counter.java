@@ -1,43 +1,13 @@
-package island.animal.kind.herbivore;
+package island.animal.utils;
 
 import island.animal.Animal;
-import island.animal.Fields;
+import island.animal.kind.enumerator.Kind;
+import island.animal.kind.herbivore.*;
 import island.animal.kind.plant.Plant;
 import island.animal.kind.predator.*;
 
-import java.util.Iterator;
-import java.util.List;
-
-public abstract class Herbivore extends Animal {
-    private double consumedFood = 0;
-    private int hunger = 0;
-
-    public Herbivore(Fields fields) {
-        super(fields);
-    }
-
-    public int getHunger() {
-        return hunger;
-    }
-
-    public void gettingHungry() {
-        this.hunger++;
-        this.consumedFood--;
-    }
-
-    public void eat(List<Animal> plants) {
-        Iterator<Animal> iterator = plants.iterator();
-        while (iterator.hasNext()) {
-            Animal plant = iterator.next();
-            this.consumedFood += 1;
-            if (this.getFields().getMaxFoodRequired() >= consumedFood) {
-                iterator.remove();
-                countDeath(plant);
-            } else {
-                break;
-            }
-        }
-    }
+public class Counter {
+    private Counter() {}
 
     public static void countDeath(Animal animal) {
         switch (animal.getClass().getSimpleName().toUpperCase()) {
@@ -57,6 +27,26 @@ public abstract class Herbivore extends Animal {
             case "DUCK" -> Duck.deathCounter++;
             case "CATERPILLAR" -> Caterpillar.deathCounter++;
             case "PLANT" -> Plant.deathCounter++;
+        }
+    }
+
+    public static void countMoves(Kind kind) {
+        switch (kind) {
+            case WOLF -> Wolf.moveCounter++;
+            case SNAKE -> Snake.moveCounter++;
+            case FOX -> Fox.moveCounter++;
+            case BEAR -> Bear.moveCounter++;
+            case EAGLE -> Eagle.moveCounter++;
+            case HORSE -> Horse.moveCounter++;
+            case DEER -> Deer.moveCounter++;
+            case RABBIT -> Rabbit.moveCounter++;
+            case MOUSE -> Mouse.moveCounter++;
+            case GOAT -> Goat.moveCounter++;
+            case SHEEP -> Sheep.moveCounter++;
+            case BOAR -> Boar.moveCounter++;
+            case BUFFALO -> Buffalo.moveCounter++;
+            case DUCK -> Duck.moveCounter++;
+            case CATERPILLAR -> Caterpillar.moveCounter++;
         }
     }
 }

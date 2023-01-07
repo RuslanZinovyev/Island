@@ -1,5 +1,6 @@
 package island.animal.utils;
 
+import island.animal.kind.enumerator.Kind;
 import island.animal.kind.herbivore.*;
 import island.animal.kind.plant.Plant;
 import island.animal.kind.predator.*;
@@ -54,6 +55,19 @@ public class Logger {
         }
     }
 
+    public int countAnimalsOnIsland(Cell[][] island) {
+        int allAnimals = 0;
+        for (Cell[] cells : island) {
+            for (Cell cell : cells) {
+                Kind[] kinds = Kind.values();
+                for (Kind kind : kinds) {
+                    allAnimals += cell.getAnimals().get(kind).size();
+                }
+            }
+        }
+        return allAnimals;
+    }
+
     public void printInfo(int day) {
         System.out.printf("Day: %d\n", day);
         print(" \uD83D\uDC3A", wolfAmount, Wolf.moveCounter, Wolf.deathCounter);
@@ -67,7 +81,7 @@ public class Logger {
         print(" \uD83D\uDC01", mouseAmount, Mouse.moveCounter, Mouse.deathCounter);
         print(" \uD83D\uDC10", goatAmount, Goat.moveCounter, Goat.deathCounter);
         print(" \uD83D\uDC11", sheepAmount, Sheep.moveCounter, Sheep.deathCounter);
-        print(" \uD83D\uDC17", boarAmount, Bear.moveCounter, Bear.deathCounter);
+        print(" \uD83D\uDC17", boarAmount, Boar.moveCounter, Boar.deathCounter);
         print(" \uD83D\uDC03", buffaloAmount, Buffalo.moveCounter, Buffalo.deathCounter);
         print(" \uD83E\uDD86", duckAmount, Duck.moveCounter, Duck.deathCounter);
         print(" \uD83D\uDC1B", caterpillarAmount, Caterpillar.moveCounter, Caterpillar.deathCounter);
@@ -116,6 +130,7 @@ public class Logger {
         Buffalo.deathCounter = 0;
         Duck.deathCounter = 0;
         Caterpillar.deathCounter = 0;
+        Plant.deathCounter = 0;
     }
 
     private void clearMoveCounters() {

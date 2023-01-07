@@ -3,12 +3,13 @@ package island.animal.kind.predator;
 import island.animal.Animal;
 import island.animal.Fields;
 import island.animal.kind.enumerator.Kind;
-import island.animal.kind.herbivore.*;
 import island.config.Configuration;
 
 import java.util.Iterator;
 import java.util.List;
 import java.util.concurrent.ThreadLocalRandom;
+
+import static island.animal.utils.Counter.countDeath;
 
 public abstract class Predator extends Animal {
     private double consumedFood = 0;
@@ -18,7 +19,15 @@ public abstract class Predator extends Animal {
         super(fields);
     }
 
-    //TODO this method should be fixed, currently it behaves incorrectly
+    public int getHunger() {
+        return hunger;
+    }
+
+    public void gettingHungry() {
+        this.hunger++;
+        this.consumedFood -= 10;
+    }
+
     public void eat(List<Animal> animals) {
         int randomNumber;
         Iterator<Animal> iterator = animals.iterator();
@@ -34,36 +43,12 @@ public abstract class Predator extends Animal {
             if (randomNumber < currentProbability) {
                 this.consumedFood += animal.getFields().getWeight();
                 if (this.getFields().getMaxFoodRequired() >= consumedFood) {
-                    countDeath(animal);
                     iterator.remove();
-                } else if (hunger > 7) {
                     countDeath(animal);
-                    iterator.remove();
                 } else {
-                    hunger++;
                     break;
                 }
             }
-        }
-    }
-
-    private void countDeath(Animal animal) {
-        switch (animal.getClass().getSimpleName().toUpperCase()) {
-            case "WOLF" -> Wolf.deathCounter++;
-            case "SNAKE" -> Snake.deathCounter++;
-            case "FOX" -> Fox.deathCounter++;
-            case "BEAR" -> Bear.deathCounter++;
-            case "EAGLE" -> Eagle.deathCounter++;
-            case "HORSE" -> Horse.deathCounter++;
-            case "DEER" -> Deer.deathCounter++;
-            case "RABBIT" -> Rabbit.deathCounter++;
-            case "MOUSE" -> Mouse.deathCounter++;
-            case "GOAT" -> Goat.deathCounter++;
-            case "SHEEP" -> Sheep.deathCounter++;
-            case "BOAR" -> Boar.deathCounter++;
-            case "BUFFALO" -> Buffalo.deathCounter++;
-            case "DUCK" -> Duck.deathCounter++;
-            case "CATERPILLAR" -> Caterpillar.deathCounter++;
         }
     }
 }
