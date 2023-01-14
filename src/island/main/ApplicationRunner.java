@@ -1,19 +1,23 @@
 package island.main;
 
 import island.animal.Animal;
+import island.animal.Fields;
 import island.animal.kind.enumerator.Kind;
 import island.animal.kind.herbivore.Herbivore;
+import island.animal.kind.herbivore.Horse;
+import island.animal.kind.predator.Bear;
 import island.animal.kind.predator.Predator;
 import island.animal.utils.Logger;
 import island.location.Cell;
 import island.model.IslandGenerator;
 
+import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
 import java.util.concurrent.ThreadLocalRandom;
 
-import static island.animal.kind.enumerator.Kind.PLANT;
+import static island.animal.kind.enumerator.Kind.*;
 import static island.animal.utils.Counter.countDeath;
 import static island.model.IslandGenerator.ISLAND;
 
@@ -49,6 +53,12 @@ public class ApplicationRunner {
     }
 
     private static void breed(Cell cell) {
+        for (Map.Entry<Kind, List<Animal>> pair : cell.getAnimals().entrySet()) {
+            List<Animal> animals = pair.getValue();
+            for (Animal animal : animals) {
+                animal.breed(cell);
+            }
+        }
     }
 
     private static void eat(Cell cell) {

@@ -1,5 +1,6 @@
 package island.animal;
 
+import island.animal.kind.Factory;
 import island.animal.kind.enumerator.Kind;
 import island.config.Configuration;
 import island.location.Cell;
@@ -42,6 +43,20 @@ public abstract class Animal {
 
         return isMove;
     }
+
+    public void breed(Cell cell) {
+        boolean isBorn = ThreadLocalRandom.current().nextBoolean();
+
+        int column = cell.getColumn();
+        int row = cell.getRow();
+
+
+        if (isBorn) {
+            Kind kind = Kind.valueOf(this.getClass().getSimpleName().toUpperCase());
+            IslandGenerator.ISLAND[row][column].getAnimals().get(kind).add(Factory.getInstance().getAnimalByKind(kind));
+        }
+    }
+
 
     @Override
     public String toString() {
