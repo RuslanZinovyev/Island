@@ -168,5 +168,6 @@ public class Logger {
         Buffalo.bornCounter = 0;
         Duck.bornCounter = 0;
         Caterpillar.bornCounter = 0;
+        Plant.bornCounter = 0;
     }
 }

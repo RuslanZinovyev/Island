@@ -67,6 +67,7 @@ public class Counter {
             case BUFFALO -> Buffalo.bornCounter++;
             case DUCK -> Duck.bornCounter++;
             case CATERPILLAR -> Caterpillar.bornCounter++;
+            case PLANT -> Plant.bornCounter++;
         }
     }
 }
