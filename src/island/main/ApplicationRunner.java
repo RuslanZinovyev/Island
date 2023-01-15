@@ -11,10 +11,7 @@ import island.animal.utils.Logger;
 import island.location.Cell;
 import island.model.IslandGenerator;
 
-import java.util.ArrayList;
-import java.util.Iterator;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 import java.util.concurrent.ThreadLocalRandom;
 
 import static island.animal.kind.enumerator.Kind.*;
@@ -55,8 +52,8 @@ public class ApplicationRunner {
     private static void breed(Cell cell) {
         for (Map.Entry<Kind, List<Animal>> pair : cell.getAnimals().entrySet()) {
             List<Animal> animals = pair.getValue();
-            for (Animal animal : animals) {
-                animal.breed(cell);
+            for (int i = 0; i < animals.size(); i++) {
+                animals.get(i).breed(cell);
             }
         }
     }

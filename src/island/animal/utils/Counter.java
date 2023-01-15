@@ -49,4 +49,24 @@ public class Counter {
             case CATERPILLAR -> Caterpillar.moveCounter++;
         }
     }
+
+    public static void countBirth(Kind kind) {
+        switch (kind) {
+            case WOLF -> Wolf.birthCounter++;
+            case SNAKE -> Snake.bornCounter++;
+            case FOX -> Fox.bornCounter++;
+            case BEAR -> Bear.bornCounter++;
+            case EAGLE -> Eagle.bornCounter++;
+            case HORSE -> Horse.bornCounter++;
+            case DEER -> Deer.bornCounter++;
+            case RABBIT -> Rabbit.bornCounter++;
+            case MOUSE -> Mouse.bornCounter++;
+            case GOAT -> Goat.bornCounter++;
+            case SHEEP -> Sheep.bornCounter++;
+            case BOAR -> Boar.bornCounter++;
+            case BUFFALO -> Buffalo.bornCounter++;
+            case DUCK -> Duck.bornCounter++;
+            case CATERPILLAR -> Caterpillar.bornCounter++;
+        }
+    }
 }

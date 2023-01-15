@@ -7,6 +7,8 @@ import island.location.Cell;
 import island.model.IslandGenerator;
 
 import java.util.concurrent.ThreadLocalRandom;
+
+import static island.animal.utils.Counter.countBirth;
 import static island.animal.utils.Counter.countMoves;
 
 public abstract class Animal {
@@ -50,13 +52,12 @@ public abstract class Animal {
         int column = cell.getColumn();
         int row = cell.getRow();
 
-
         if (isBorn) {
             Kind kind = Kind.valueOf(this.getClass().getSimpleName().toUpperCase());
             IslandGenerator.ISLAND[row][column].getAnimals().get(kind).add(Factory.getInstance().getAnimalByKind(kind));
+            countBirth(kind);
         }
     }
-
 
     @Override
     public String toString() {
