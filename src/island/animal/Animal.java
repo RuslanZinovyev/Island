@@ -12,7 +12,6 @@ import static island.animal.utils.Counter.countBirth;
 import static island.animal.utils.Counter.countMoves;
 
 public abstract class Animal {
-
     public static final String PLANT = "Plant";
     private final Fields fields;
 
