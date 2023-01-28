@@ -15,8 +15,6 @@ import static island.animal.utils.Counter.countDeath;
 
 public class LifeCycle {
 
-
-
     public void breed(Cell cell) {
         for (Map.Entry<Kind, List<Animal>> pair : cell.getAnimals().entrySet()) {
             List<Animal> animals = pair.getValue();
@@ -42,7 +40,7 @@ public class LifeCycle {
                         for (Kind eachAnimal : allAnimals) {
                             ((Predator) animal).eat(cell.getAnimals().get(eachAnimal));
                         }
-                    } else if (((Predator) animal).getHunger() > 7) {
+                    } else if (((Predator) animal).getHunger() > 2) {
                         iterator.remove();
                         countDeath(animal);
                         break;

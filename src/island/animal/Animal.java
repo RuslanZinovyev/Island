@@ -10,6 +10,7 @@ import java.util.concurrent.ThreadLocalRandom;
 
 import static island.animal.utils.Counter.countBirth;
 import static island.animal.utils.Counter.countMoves;
+import static island.config.Configuration.breedChance;
 
 public abstract class Animal {
     public static final String PLANT = "Plant";
@@ -46,13 +47,14 @@ public abstract class Animal {
     }
 
     public void breed(Cell cell) {
-        boolean isBorn = ThreadLocalRandom.current().nextBoolean();
+        int randomNumber = ThreadLocalRandom.current().nextInt(100);
+        Kind kind = Kind.valueOf(this.getClass().getSimpleName().toUpperCase());
+        int currentProbability = breedChance.get(kind);
 
         int column = cell.getColumn();
         int row = cell.getRow();
 
-        if (isBorn) {
-            Kind kind = Kind.valueOf(this.getClass().getSimpleName().toUpperCase());
+        if (randomNumber < currentProbability) {
             IslandGenerator.ISLAND[row][column].getAnimals().get(kind).add(Factory.getInstance().getAnimalByKind(kind));
             countBirth(kind);
         }

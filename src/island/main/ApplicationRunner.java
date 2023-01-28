@@ -36,6 +36,6 @@ public class ApplicationRunner {
             logger.clearFields();
         }
         System.out.println(GAME_OVER);
-        System.out.printf("All the animals were dead on %d day", day);
+        System.out.printf("All the animals were dead on %d day\n", day);
     }
 }
