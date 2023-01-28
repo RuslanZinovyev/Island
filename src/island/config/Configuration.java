@@ -14,6 +14,7 @@ public class Configuration {
     public static final int column = 2;
     public static Map<Kind, Fields> animalFields = new HashMap<>();
     public static int[][] probabilities = new int[values().length][values().length];
+    public static Map<Kind, Integer> breedChance = new HashMap<>();
 
     private Configuration() {}
 
@@ -35,6 +36,7 @@ public class Configuration {
         animalFields.put(CATERPILLAR, new Fields("Caterpillar", " \uD83D\uDC1B", 0.01f, 1, 1, 1000));
         animalFields.put(PLANT, new Fields("Plant", " \uD83E\uDEB4", 1, 0, 0, 4000));
         // WOLF
+        breedChance.put(WOLF, 3);
         probabilities[WOLF.ordinal()][SNAKE.ordinal()] = 0;
         probabilities[WOLF.ordinal()][FOX.ordinal()] = 0;
         probabilities[WOLF.ordinal()][BEAR.ordinal()] = 0;
@@ -51,6 +53,7 @@ public class Configuration {
         probabilities[WOLF.ordinal()][CATERPILLAR.ordinal()] = 0;
         probabilities[WOLF.ordinal()][PLANT.ordinal()] = 0;
         // SNAKE
+        breedChance.put(SNAKE, 3);
         probabilities[SNAKE.ordinal()][WOLF.ordinal()] = 0;
         probabilities[SNAKE.ordinal()][FOX.ordinal()] = 15;
         probabilities[SNAKE.ordinal()][BEAR.ordinal()] = 0;
@@ -67,6 +70,7 @@ public class Configuration {
         probabilities[SNAKE.ordinal()][CATERPILLAR.ordinal()] = 0;
         probabilities[SNAKE.ordinal()][PLANT.ordinal()] = 0;
         // FOX
+        breedChance.put(FOX, 3);
         probabilities[FOX.ordinal()][WOLF.ordinal()] = 0;
         probabilities[FOX.ordinal()][SNAKE.ordinal()] = 0;
         probabilities[FOX.ordinal()][BEAR.ordinal()] = 0;
@@ -83,6 +87,7 @@ public class Configuration {
         probabilities[FOX.ordinal()][CATERPILLAR.ordinal()] = 40;
         probabilities[FOX.ordinal()][PLANT.ordinal()] = 0;
         // BEAR
+        breedChance.put(BEAR, 3);
         probabilities[BEAR.ordinal()][WOLF.ordinal()] = 0;
         probabilities[BEAR.ordinal()][SNAKE.ordinal()] = 80;
         probabilities[BEAR.ordinal()][FOX.ordinal()] = 0;
@@ -99,6 +104,7 @@ public class Configuration {
         probabilities[BEAR.ordinal()][CATERPILLAR.ordinal()] = 0;
         probabilities[BEAR.ordinal()][PLANT.ordinal()] = 0;
         // EAGLE
+        breedChance.put(EAGLE, 5);
         probabilities[EAGLE.ordinal()][WOLF.ordinal()] = 0;
         probabilities[EAGLE.ordinal()][SNAKE.ordinal()] = 0;
         probabilities[EAGLE.ordinal()][FOX.ordinal()] = 10;
@@ -115,6 +121,7 @@ public class Configuration {
         probabilities[EAGLE.ordinal()][CATERPILLAR.ordinal()] = 0;
         probabilities[EAGLE.ordinal()][PLANT.ordinal()] = 0;
         // HORSE
+        breedChance.put(HORSE, 8);
         probabilities[HORSE.ordinal()][WOLF.ordinal()] = 0;
         probabilities[HORSE.ordinal()][SNAKE.ordinal()] = 0;
         probabilities[HORSE.ordinal()][FOX.ordinal()] = 0;
@@ -131,6 +138,7 @@ public class Configuration {
         probabilities[HORSE.ordinal()][CATERPILLAR.ordinal()] = 0;
         probabilities[HORSE.ordinal()][PLANT.ordinal()] = 100;
         // DEER
+        breedChance.put(DEER, 5);
         probabilities[DEER.ordinal()][WOLF.ordinal()] = 0;
         probabilities[DEER.ordinal()][SNAKE.ordinal()] = 0;
         probabilities[DEER.ordinal()][FOX.ordinal()] = 0;
@@ -147,6 +155,7 @@ public class Configuration {
         probabilities[DEER.ordinal()][CATERPILLAR.ordinal()] = 0;
         probabilities[DEER.ordinal()][PLANT.ordinal()] = 100;
         // RABBIT
+        breedChance.put(RABBIT, 40);
         probabilities[RABBIT.ordinal()][WOLF.ordinal()] = 0;
         probabilities[RABBIT.ordinal()][SNAKE.ordinal()] = 0;
         probabilities[RABBIT.ordinal()][FOX.ordinal()] = 0;
@@ -163,6 +172,7 @@ public class Configuration {
         probabilities[RABBIT.ordinal()][CATERPILLAR.ordinal()] = 0;
         probabilities[RABBIT.ordinal()][PLANT.ordinal()] = 100;
         // MOUSE
+        breedChance.put(MOUSE, 30);
         probabilities[MOUSE.ordinal()][WOLF.ordinal()] = 0;
         probabilities[MOUSE.ordinal()][SNAKE.ordinal()] = 0;
         probabilities[MOUSE.ordinal()][FOX.ordinal()] = 0;
@@ -179,6 +189,7 @@ public class Configuration {
         probabilities[MOUSE.ordinal()][CATERPILLAR.ordinal()] = 90;
         probabilities[MOUSE.ordinal()][PLANT.ordinal()] = 100;
         // GOAT
+        breedChance.put(GOAT, 5);
         probabilities[GOAT.ordinal()][WOLF.ordinal()] = 0;
         probabilities[GOAT.ordinal()][SNAKE.ordinal()] = 0;
         probabilities[GOAT.ordinal()][FOX.ordinal()] = 0;
@@ -195,6 +206,7 @@ public class Configuration {
         probabilities[GOAT.ordinal()][CATERPILLAR.ordinal()] = 0;
         probabilities[GOAT.ordinal()][PLANT.ordinal()] = 100;
         // SHEEP
+        breedChance.put(SHEEP, 15);
         probabilities[SHEEP.ordinal()][WOLF.ordinal()] = 0;
         probabilities[SHEEP.ordinal()][SNAKE.ordinal()] = 0;
         probabilities[SHEEP.ordinal()][FOX.ordinal()] = 0;
@@ -211,6 +223,7 @@ public class Configuration {
         probabilities[SHEEP.ordinal()][CATERPILLAR.ordinal()] = 0;
         probabilities[SHEEP.ordinal()][PLANT.ordinal()] = 100;
         // BOAR
+        breedChance.put(BOAR, 10);
         probabilities[BOAR.ordinal()][WOLF.ordinal()] = 0;
         probabilities[BOAR.ordinal()][SNAKE.ordinal()] = 0;
         probabilities[BOAR.ordinal()][FOX.ordinal()] = 0;
@@ -227,6 +240,7 @@ public class Configuration {
         probabilities[BOAR.ordinal()][CATERPILLAR.ordinal()] = 90;
         probabilities[BOAR.ordinal()][PLANT.ordinal()] = 100;
         // BUFFALO
+        breedChance.put(BUFFALO, 10);
         probabilities[BUFFALO.ordinal()][WOLF.ordinal()] = 0;
         probabilities[BUFFALO.ordinal()][SNAKE.ordinal()] = 0;
         probabilities[BUFFALO.ordinal()][FOX.ordinal()] = 0;
@@ -243,6 +257,7 @@ public class Configuration {
         probabilities[BUFFALO.ordinal()][CATERPILLAR.ordinal()] = 0;
         probabilities[BUFFALO.ordinal()][PLANT.ordinal()] = 100;
         // DUCK
+        breedChance.put(DUCK, 10);
         probabilities[DUCK.ordinal()][WOLF.ordinal()] = 0;
         probabilities[DUCK.ordinal()][SNAKE.ordinal()] = 0;
         probabilities[DUCK.ordinal()][FOX.ordinal()] = 0;
@@ -259,6 +274,7 @@ public class Configuration {
         probabilities[DUCK.ordinal()][CATERPILLAR.ordinal()] = 90;
         probabilities[DUCK.ordinal()][PLANT.ordinal()] = 100;
         // CATERPILLAR
+        breedChance.put(CATERPILLAR, 20);
         probabilities[CATERPILLAR.ordinal()][WOLF.ordinal()] = 0;
         probabilities[CATERPILLAR.ordinal()][SNAKE.ordinal()] = 0;
         probabilities[CATERPILLAR.ordinal()][FOX.ordinal()] = 0;
@@ -274,5 +290,8 @@ public class Configuration {
         probabilities[CATERPILLAR.ordinal()][BUFFALO.ordinal()] = 0;
         probabilities[CATERPILLAR.ordinal()][DUCK.ordinal()] = 0;
         probabilities[CATERPILLAR.ordinal()][PLANT.ordinal()] = 100;
+
+        // PLANT
+        breedChance.put(PLANT, 10);
     }
 }

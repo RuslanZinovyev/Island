@@ -1,15 +1,18 @@
 package island.animal;
 
+import island.animal.kind.Factory;
 import island.animal.kind.enumerator.Kind;
 import island.config.Configuration;
 import island.location.Cell;
 import island.model.IslandGenerator;
 
 import java.util.concurrent.ThreadLocalRandom;
+
+import static island.animal.utils.Counter.countBirth;
 import static island.animal.utils.Counter.countMoves;
+import static island.config.Configuration.breedChance;
 
 public abstract class Animal {
-
     public static final String PLANT = "Plant";
     private final Fields fields;
 
@@ -41,6 +44,20 @@ public abstract class Animal {
         }
 
         return isMove;
+    }
+
+    public void breed(Cell cell) {
+        int randomNumber = ThreadLocalRandom.current().nextInt(100);
+        Kind kind = Kind.valueOf(this.getClass().getSimpleName().toUpperCase());
+        int currentProbability = breedChance.get(kind);
+
+        int column = cell.getColumn();
+        int row = cell.getRow();
+
+        if (randomNumber < currentProbability) {
+            IslandGenerator.ISLAND[row][column].getAnimals().get(kind).add(Factory.getInstance().getAnimalByKind(kind));
+            countBirth(kind);
+        }
     }
 
     @Override

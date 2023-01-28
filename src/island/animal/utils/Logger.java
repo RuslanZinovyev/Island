@@ -30,6 +30,7 @@ public class Logger {
         clearAmountCounters();
         clearMoveCounters();
         clearDeathCounters();
+        clearBirthCounters();
     }
 
     public void countAnimalsOnCell(Cell[][] island) {
@@ -70,28 +71,28 @@ public class Logger {
 
     public void printInfo(int day) {
         System.out.printf("Day: %d\n", day);
-        print(" \uD83D\uDC3A", wolfAmount, Wolf.moveCounter, Wolf.deathCounter);
-        print(" \uD83D\uDC0D", snakeAmount, Snake.moveCounter, Snake.deathCounter);
-        print(" \uD83E\uDD8A", foxAmount, Fox.moveCounter, Fox.deathCounter);
-        print(" \uD83D\uDC3B", bearAmount, Bear.moveCounter, Bear.deathCounter);
-        print(" \uD83E\uDD85", eagleAmount, Eagle.moveCounter, Eagle.deathCounter);
-        print(" \uD83D\uDC0E", horseAmount, Horse.moveCounter, Horse.deathCounter);
-        print(" \uD83E\uDD8C", deerAmount, Deer.moveCounter, Deer.deathCounter);
-        print(" \uD83D\uDC07", rabbitAmount, Rabbit.moveCounter, Rabbit.deathCounter);
-        print(" \uD83D\uDC01", mouseAmount, Mouse.moveCounter, Mouse.deathCounter);
-        print(" \uD83D\uDC10", goatAmount, Goat.moveCounter, Goat.deathCounter);
-        print(" \uD83D\uDC11", sheepAmount, Sheep.moveCounter, Sheep.deathCounter);
-        print(" \uD83D\uDC17", boarAmount, Boar.moveCounter, Boar.deathCounter);
-        print(" \uD83D\uDC03", buffaloAmount, Buffalo.moveCounter, Buffalo.deathCounter);
-        print(" \uD83E\uDD86", duckAmount, Duck.moveCounter, Duck.deathCounter);
-        print(" \uD83D\uDC1B", caterpillarAmount, Caterpillar.moveCounter, Caterpillar.deathCounter);
-        print(" \uD83E\uDEB4", plantAmount, 0, Plant.deathCounter);
+        print(" \uD83D\uDC3A", wolfAmount, Wolf.moveCounter, Wolf.deathCounter, Wolf.birthCounter);
+        print(" \uD83D\uDC0D", snakeAmount, Snake.moveCounter, Snake.deathCounter, Snake.bornCounter);
+        print(" \uD83E\uDD8A", foxAmount, Fox.moveCounter, Fox.deathCounter, Fox.bornCounter);
+        print(" \uD83D\uDC3B", bearAmount, Bear.moveCounter, Bear.deathCounter, Bear.bornCounter);
+        print(" \uD83E\uDD85", eagleAmount, Eagle.moveCounter, Eagle.deathCounter, Eagle.bornCounter);
+        print(" \uD83D\uDC0E", horseAmount, Horse.moveCounter, Horse.deathCounter, Horse.bornCounter);
+        print(" \uD83E\uDD8C", deerAmount, Deer.moveCounter, Deer.deathCounter, Deer.bornCounter);
+        print(" \uD83D\uDC07", rabbitAmount, Rabbit.moveCounter, Rabbit.deathCounter, Rabbit.bornCounter);
+        print(" \uD83D\uDC01", mouseAmount, Mouse.moveCounter, Mouse.deathCounter, Mouse.bornCounter);
+        print(" \uD83D\uDC10", goatAmount, Goat.moveCounter, Goat.deathCounter, Goat.bornCounter);
+        print(" \uD83D\uDC11", sheepAmount, Sheep.moveCounter, Sheep.deathCounter, Sheep.bornCounter);
+        print(" \uD83D\uDC17", boarAmount, Boar.moveCounter, Boar.deathCounter, Boar.bornCounter);
+        print(" \uD83D\uDC03", buffaloAmount, Buffalo.moveCounter, Buffalo.deathCounter, Buffalo.bornCounter);
+        print(" \uD83E\uDD86", duckAmount, Duck.moveCounter, Duck.deathCounter, Duck.bornCounter);
+        print(" \uD83D\uDC1B", caterpillarAmount, Caterpillar.moveCounter, Caterpillar.deathCounter, Caterpillar.bornCounter);
+        print(" \uD83E\uDEB4", plantAmount, 0, Plant.deathCounter, Plant.bornCounter);
     }
 
-    private void print(String icon, int amount, int moveCounter, int deathCounter) {
+    private void print(String icon, int amount, int moveCounter, int deathCounter, int birthCounter) {
         System.out.printf(
                 "%s[Общее количество = %d, Количество смертей = %d, Количество перемещений = %d, Количество новорожденных = %d]\n",
-                icon, amount, deathCounter, moveCounter, 0
+                icon, amount, deathCounter, moveCounter, birthCounter
         );
     }
 
@@ -149,5 +150,24 @@ public class Logger {
         Buffalo.moveCounter = 0;
         Duck.moveCounter = 0;
         Caterpillar.moveCounter = 0;
+    }
+
+    private void clearBirthCounters() {
+        Wolf.birthCounter = 0;
+        Snake.bornCounter = 0;
+        Fox.bornCounter = 0;
+        Bear.bornCounter = 0;
+        Eagle.bornCounter = 0;
+        Horse.bornCounter = 0;
+        Deer.bornCounter = 0;
+        Rabbit.bornCounter = 0;
+        Mouse.bornCounter = 0;
+        Goat.bornCounter = 0;
+        Sheep.bornCounter = 0;
+        Boar.bornCounter = 0;
+        Buffalo.bornCounter = 0;
+        Duck.bornCounter = 0;
+        Caterpillar.bornCounter = 0;
+        Plant.bornCounter = 0;
     }
 }
