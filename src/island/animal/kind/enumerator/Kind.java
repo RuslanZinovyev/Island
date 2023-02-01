@@ -1,7 +1,7 @@
 package island.animal.kind.enumerator;
 
 public enum Kind {
-    WOLF, SNAKE, FOX, BEAR, EAGLE, HORSE, DEER, RABBIT, MOUSE, GOAT, SHEEP, BOAR, BUFFALO, DUCK, CATERPILLAR, PLANT;
+    WOLF, SNAKE, FOX, BEAR, EAGLE, HORSE, DEER, RABBIT, MOUSE, GOAT, SHEEP, BOAR, BUFFALO, DUCK, CATERPILLAR;
 
     public static Kind[] getHerbivores() {
         Kind[] herbivores = { HORSE, DEER, RABBIT, MOUSE, GOAT, SHEEP, BOAR, BUFFALO, DUCK, CATERPILLAR };

@@ -3,7 +3,6 @@ package island.animal.kind;
 import island.animal.Animal;
 import island.animal.kind.enumerator.Kind;
 import island.animal.kind.herbivore.*;
-import island.animal.kind.plant.Plant;
 import island.animal.kind.predator.*;
 import island.config.Configuration;
 
@@ -40,7 +39,6 @@ public class Factory {
                     case BUFFALO -> new Buffalo(Configuration.animalFields.get(BUFFALO));
                     case DUCK -> new Duck(Configuration.animalFields.get(DUCK));
                     case CATERPILLAR -> new Caterpillar(Configuration.animalFields.get(CATERPILLAR));
-                    case PLANT -> new Plant(Configuration.animalFields.get(PLANT));
                 };
 
         return animal;

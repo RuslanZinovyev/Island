@@ -3,7 +3,12 @@ package island.main;
 import island.animal.utils.Logger;
 import island.location.Cell;
 import island.location.LifeCycle;
+import island.location.PlantGrowth;
 import island.model.IslandGenerator;
+
+import java.util.concurrent.Executors;
+import java.util.concurrent.ScheduledExecutorService;
+import java.util.concurrent.TimeUnit;
 
 import static island.model.IslandGenerator.ISLAND;
 
@@ -12,8 +17,10 @@ public class ApplicationRunner {
     public static int day = 0;
 
     public static void main(String[] args) {
+        ScheduledExecutorService executorLifeCycle = Executors.newScheduledThreadPool(2);
+        ScheduledExecutorService executorPlantGrowth = Executors.newScheduledThreadPool(2);
+
         IslandGenerator islandGenerator = new IslandGenerator();
-        LifeCycle lifeCycle = new LifeCycle();
         Logger logger = new Logger();
         islandGenerator.initialize();
 
@@ -22,9 +29,8 @@ public class ApplicationRunner {
             logger.countAnimalsOnCell(ISLAND);
             for (Cell[] cells : ISLAND) {
                 for (Cell cell : cells) {
-                    lifeCycle.move(cell);
-                    lifeCycle.eat(cell);
-                    lifeCycle.breed(cell);
+                    executorPlantGrowth.scheduleWithFixedDelay(new PlantGrowth(cell), 1, 1, TimeUnit.SECONDS);
+                    executorLifeCycle.scheduleWithFixedDelay(new LifeCycle(cell), 2, 1, TimeUnit.SECONDS);
                 }
             }
             try {

@@ -26,7 +26,6 @@ public class Counter {
             case "BUFFALO" -> Buffalo.deathCounter++;
             case "DUCK" -> Duck.deathCounter++;
             case "CATERPILLAR" -> Caterpillar.deathCounter++;
-            case "PLANT" -> Plant.deathCounter++;
         }
     }
 
@@ -67,7 +66,14 @@ public class Counter {
             case BUFFALO -> Buffalo.bornCounter++;
             case DUCK -> Duck.bornCounter++;
             case CATERPILLAR -> Caterpillar.bornCounter++;
-            case PLANT -> Plant.bornCounter++;
         }
+    }
+
+    public static void countPlantBirth() {
+        Plant.bornCounter++;
+    }
+
+    public static void countPlantDeath() {
+        Plant.deathCounter++;
     }
 }

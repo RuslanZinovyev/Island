@@ -51,7 +51,7 @@ public class Logger {
                 buffaloAmount += cell.getAnimals().get(BUFFALO).size();
                 duckAmount += cell.getAnimals().get(DUCK).size();
                 caterpillarAmount += cell.getAnimals().get(CATERPILLAR).size();
-                plantAmount += cell.getAnimals().get(PLANT).size();
+                plantAmount += cell.getPlants().size();
             }
         }
     }

@@ -3,6 +3,7 @@ package island.location;
 import island.animal.Animal;
 import island.animal.kind.enumerator.Kind;
 import island.animal.kind.herbivore.Herbivore;
+import island.animal.kind.plant.Plant;
 import island.animal.kind.predator.Predator;
 
 import java.util.Iterator;
@@ -10,10 +11,14 @@ import java.util.List;
 import java.util.Map;
 import java.util.concurrent.ThreadLocalRandom;
 
-import static island.animal.kind.enumerator.Kind.PLANT;
 import static island.animal.utils.Counter.countDeath;
 
-public class LifeCycle {
+public class LifeCycle implements Runnable {
+    private final Cell cell;
+
+    public LifeCycle(Cell cell) {
+        this.cell = cell;
+    }
 
     public void breed(Cell cell) {
         for (Map.Entry<Kind, List<Animal>> pair : cell.getAnimals().entrySet()) {
@@ -40,7 +45,7 @@ public class LifeCycle {
                         for (Kind eachAnimal : allAnimals) {
                             ((Predator) animal).eat(cell.getAnimals().get(eachAnimal));
                         }
-                    } else if (((Predator) animal).getHunger() > 2) {
+                    } else if (((Predator) animal).getHunger() > 1) {
                         iterator.remove();
                         countDeath(animal);
                         break;
@@ -48,12 +53,12 @@ public class LifeCycle {
                         ((Predator) animal).gettingHungry();
                     }
                 } else if (animal instanceof Herbivore) {
-                    List<Animal> plants = cell.getAnimals().get(PLANT);
+                    List<Plant> plants = cell.getPlants();
                     if (plants.size() != 0) {
                         isGoingToEat = ThreadLocalRandom.current().nextBoolean();
                         if (isGoingToEat) {
                             ((Herbivore) animal).eat(plants);
-                        } else if (((Herbivore) animal).getHunger() > 7) {
+                        } else if (((Herbivore) animal).getHunger() > 1) {
                             iterator.remove();
                             countDeath(animal);
                             break;
@@ -81,5 +86,18 @@ public class LifeCycle {
                 }
             }
         }
+    }
+
+    @Override
+    public void run() {
+        cell.getLock().lock();
+        try {
+            eat(cell);
+            breed(cell);
+            move(cell);
+        } finally {
+            cell.getLock().unlock();
+        }
+
     }
 }
